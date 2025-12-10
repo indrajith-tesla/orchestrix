@@ -1,23 +1,40 @@
 export default function Vision() {
   return (
-    <section className="py-32 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-blue-700 rounded-full filter blur-3xl" />
-      </div>
-
-      <div className="relative max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 tracking-tight">
-          Our Vision
-        </h2>
-
-        <p className="text-2xl md:text-3xl leading-relaxed font-light text-gray-300">
-          To become a trusted engineering partner that helps businesses build, scale, and succeed through{' '}
-          <span className="text-white font-medium">
-            innovative and affordable technology
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-60 grid-overlay pointer-events-none" />
+      <div className="max-w-5xl mx-auto px-6 relative">
+        <div className="text-center space-y-4 mb-12">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm uppercase tracking-[0.2em] text-purple-200">
+            Vision
           </span>
-          .
-        </p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Engineering that compounds</h2>
+          <p className="text-lg text-gray-300">
+            We want every release to be faster than the last because the system, the team, and the product get stronger
+            together.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              title: 'Built to last',
+              desc: 'Design choices with clear trade-offs, documentation, and observability baked in.',
+            },
+            {
+              title: 'Inclusive execution',
+              desc: 'We work in the open with your founders, PMs, and engineers—no black boxes.',
+            },
+            {
+              title: 'Measurable outcomes',
+              desc: 'Shipping velocity, reliability, and product value tracked with real metrics.',
+            },
+          ].map((item) => (
+            <div key={item.title} className="card glass-border p-6 text-left">
+              <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+              <p className="text-gray-300 leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,33 +1,39 @@
 import { Check } from 'lucide-react';
 
 const reasons = [
-  'Affordable. High quality. Zero fluff.',
-  'Fast execution by a focused engineering team',
-  'Direct collaboration—no middle layers',
-  'Engineering-first mindset',
+  'Founder-style urgency with engineering depth',
+  'Senior builders only — strategy through delivery',
+  'Clear playbooks: architecture, QA, observability, runbooks',
+  'Design systems and DX that keep velocity compounding',
 ];
 
 export default function Why() {
   return (
-    <section className="py-32 bg-gradient-to-b from-gray-50 to-white">
+    <section className="py-28">
       <div className="max-w-5xl mx-auto px-6">
-        <h2 className="text-5xl md:text-6xl font-bold text-center text-black mb-20 tracking-tight">
-          Why OrchestriX
-        </h2>
+        <div className="text-center space-y-4 mb-14">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm uppercase tracking-[0.2em] text-amber-200">
+            Why OrchestriX
+          </span>
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+            A studio built for decisive teams
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            We ship at startup speed with enterprise guardrails. Every engagement pairs design clarity with strong
+            technical governance.
+          </p>
+        </div>
 
-        <div className="space-y-6">
-          {reasons.map((reason, index) => (
+        <div className="space-y-4">
+          {reasons.map((reason) => (
             <div
-              key={index}
-              className="flex items-start gap-6 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100"
+              key={reason}
+              className="card glass-border p-6 flex items-center gap-4 hover:-translate-y-[2px] transition-transform"
             >
-              <div className="flex-shrink-0 w-8 h-8 bg-black rounded-full flex items-center justify-center">
-                <Check className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-300 to-purple-500 flex items-center justify-center">
+                <Check className="w-5 h-5 text-black" />
               </div>
-
-              <p className="text-xl md:text-2xl text-black font-medium pt-0.5">
-                {reason}
-              </p>
+              <p className="text-xl text-white font-medium leading-relaxed">{reason}</p>
             </div>
           ))}
         </div>

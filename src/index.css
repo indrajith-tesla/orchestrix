@@ -3,9 +3,22 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --ox-ink: #0b1021;
+    --ox-graphite: #0f172a;
+    --ox-iris: #7c3aed;
+    --ox-mint: #22d3ee;
+    --ox-amber: #fbbf24;
+  }
+
   body {
-    @apply antialiased;
+    @apply antialiased text-gray-900 bg-gray-50;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.08), transparent 25%),
+      radial-gradient(circle at 90% 10%, rgba(34, 211, 238, 0.1), transparent 18%),
+      radial-gradient(circle at 50% 90%, rgba(251, 191, 36, 0.08), transparent 24%),
+      #0b1021;
+    color: #e5e7eb;
   }
 
   html {
@@ -14,8 +27,32 @@
 }
 
 @layer utilities {
+  .card {
+    @apply bg-white/10 border border-white/10 rounded-3xl backdrop-blur-xl shadow-2xl shadow-black/30;
+  }
+
+  .grid-overlay {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.7), transparent 65%);
+  }
+
+  .glass-border {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+
   .animate-fade-in {
     animation: fadeIn 1.2s ease-out;
+  }
+
+  .animate-rise {
+    animation: rise 1.2s ease-out forwards;
+    opacity: 0;
+  }
+
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
   }
 
   @keyframes fadeIn {
@@ -26,6 +63,27 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-10px) translateX(6px);
     }
   }
 }
