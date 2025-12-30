@@ -17,11 +17,11 @@ export default function Footer() {
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <a
-                href="mailto:hello@orchestrix.com"
+                href="mailto:contact.orchestrix@gmail.com"
                 className="px-6 py-3 rounded-full bg-white text-black font-medium flex items-center gap-2 justify-center hover:opacity-90 transition"
               >
                 <Mail className="w-5 h-5" />
-                hello@orchestrix.com
+                contact.orchestrix@gmail.com
               </a>
               <a
                 href="#solutions"
@@ -79,6 +79,20 @@ export default function Footer() {
                   <Icon className="w-5 h-5 text-white" />
                 </a>
               ))}
+            </div>
+            <div className="space-y-1 text-gray-300">
+              <p>
+                Email:{' '}
+                <a className="hover:text-white transition-colors" href="mailto:contact.orchestrix@gmail.com">
+                  contact.orchestrix@gmail.com
+                </a>
+              </p>
+              <p>
+                Phone:{' '}
+                <a className="hover:text-white transition-colors" href="tel:9778254068">
+                  9778254068
+                </a>
+              </p>
             </div>
           </div>
         </div>
