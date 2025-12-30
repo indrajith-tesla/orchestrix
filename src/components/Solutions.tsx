@@ -3,99 +3,59 @@ import { Code, Cloud, BrainCircuit, RefreshCw } from 'lucide-react';
 const solutions = [
   {
     icon: Code,
-    title: 'Product & App Development',
-    description: 'From idea to launch-ready products with clean, modern stacks.',
-    highlights: ['MVPs & v1.0s', 'Web & mobile', 'Design systems', 'Performance-first'],
+    title: 'Product & app',
+    line: 'New products, new surfaces, calm launches.',
   },
   {
     icon: Cloud,
-    title: 'Cloud & Infrastructure',
-    description: 'Resilient, observable infra that scales without drama.',
-    highlights: ['Well-architected reviews', 'IaC & CI/CD', 'Cost optimization', 'SRE practices'],
+    title: 'Cloud & platform',
+    line: 'Infra, CI/CD, and SRE that stay boring.',
   },
   {
     icon: BrainCircuit,
-    title: 'Data & AI Solutions',
-    description: 'Data foundations and ML that ship value, not just models.',
-    highlights: ['Analytics stacks', 'Pipelines & orchestration', 'Feature stores', 'Responsible AI'],
+    title: 'Data & AI',
+    line: 'Signals and models wired into the product.',
   },
   {
     icon: RefreshCw,
-    title: 'Code & System Improvements',
-    description: 'Refactors that unblock velocity and unlock reliability.',
-    highlights: ['Legacy modernization', 'Performance tuning', 'Testing strategies', 'DX upgrades'],
+    title: 'Refine & repair',
+    line: 'Modernise, simplify, and make things fast again.',
   },
 ];
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-28">
+    <section id="solutions" className="py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 mb-14">
-          <div className="space-y-4 max-w-2xl">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-sm uppercase tracking-[0.2em] text-cyan-200">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <span className="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[11px] font-medium uppercase tracking-[0.24em] text-cyan-200/90">
               Our craft
             </span>
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.05]">
-              Precision-built solutions that stay elegant under pressure
-            </h2>
-            <p className="text-lg text-gray-300">
-              Whether you need a zero-to-one build or a modernization rescue, we architect with longevity, ship with
-              speed, and layer in observability so the next release is faster than the last.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {['Design-to-code', 'Secure by default', 'Performance budgets', 'Runbooks & SLOs'].map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-sm text-gray-100"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="card glass-border p-6 w-full lg:w-[360px]">
-            <p className="text-sm uppercase tracking-[0.25em] text-gray-300 mb-4">Engagement rhythm</p>
-            <ul className="space-y-3 text-gray-100">
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 mt-2 rounded-full bg-cyan-300" />
-                Weekly demos & decision logs
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 mt-2 rounded-full bg-purple-400" />
-                Design + architecture first, then execution
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 mt-2 rounded-full bg-amber-300" />
-                Instrumented releases with guardrails
-              </li>
-            </ul>
-          </div>
+          <h2 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight">
+            What we’re unusually good at.
+          </h2>
+          <p className="mt-3 text-sm md:text-base text-gray-300">
+            Four lenses we use to move products forward. Most work we do sits somewhere between them.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
           {solutions.map((solution) => (
             <div
               key={solution.title}
-              className="card glass-border p-8 relative overflow-hidden group hover:-translate-y-1 transition-transform"
+              className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 px-5 py-6 text-left backdrop-blur-xl transition-all duration-400 hover:bg-white/8 hover:border-white/25 hover:-translate-y-0.5"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="flex items-center gap-4 mb-4 relative">
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+              <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_0%_0%,rgba(56,189,248,0.16),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(168,85,247,0.18),transparent_55%)]" />
+              <div className="relative flex flex-col items-start gap-3">
+                <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-500 shadow-md shadow-cyan-500/40">
                   <solution.icon className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-semibold text-white">{solution.title}</h3>
-              </div>
-              <p className="text-gray-300 leading-relaxed mb-6">{solution.description}</p>
-              <div className="flex flex-wrap gap-2">
-                {solution.highlights.map((highlight) => (
-                  <span
-                    key={highlight}
-                    className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-gray-100"
-                  >
-                    {highlight}
-                  </span>
-                ))}
+                <h3 className="text-sm md:text-base font-semibold text-white">
+                  {solution.title}
+                </h3>
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+                  {solution.line}
+                </p>
               </div>
             </div>
           ))}

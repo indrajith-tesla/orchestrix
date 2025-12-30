@@ -37,16 +37,6 @@
     --ox-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
     color-scheme: dark;
   }
-
-  .theme-light {
-    --ox-bg: #f8fafc;
-    --ox-text: #0f172a;
-    --ox-muted: #475569;
-    --ox-card: rgba(255, 255, 255, 0.92);
-    --ox-border: #e2e8f0;
-    --ox-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
-    color-scheme: light;
-  }
 }
 
 @layer utilities {
@@ -114,53 +104,24 @@
     }
   }
 
-  .theme-light .grid-overlay {
-    background-image: linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
-    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.4), transparent 68%);
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .theme-light .text-white,
-  .theme-light .text-gray-100,
-  .theme-light .text-gray-200 {
-    color: var(--ox-text) !important;
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
   }
 
-  .theme-light .text-gray-300 {
-    color: var(--ox-muted) !important;
-  }
-
-  .theme-light .text-gray-400 {
-    color: #64748b !important;
-  }
-
-  .theme-light .text-gray-500 {
-    color: #94a3b8 !important;
-  }
-
-  .theme-light .bg-white\/10 {
-    background-color: rgba(15, 23, 42, 0.06) !important;
-  }
-
-  .theme-light .bg-white\/5 {
-    background-color: rgba(15, 23, 42, 0.04) !important;
-  }
-
-  .theme-light .border-white\/10,
-  .theme-light .border-white\/15,
-  .theme-light .border-white\/30 {
-    border-color: #e2e8f0 !important;
-  }
-
-  .theme-light .card svg {
-    color: var(--ox-text);
-  }
-
-  .theme-light .hero-section .text-white {
-    color: #ffffff !important;
-  }
-
-  .theme-light .hero-section .text-gray-300 {
-    color: #e2e8f0 !important;
-  }
 }

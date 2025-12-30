@@ -2,7 +2,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden hero-section py-12">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden hero-section">
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -11,23 +11,23 @@ export default function Hero() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 theme-dark:opacity-100 theme-light:opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
       </div>
 
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-6 md:mb-8 tracking-tight animate-fade-in">
+        <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tight animate-fade-in">
           OrchestriX
         </h1>
 
-        <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-white mb-4 md:mb-6 tracking-wide px-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-white mb-6 tracking-wide">
           Building Smart, Scalable & Affordable Digital Solutions
         </h2>
 
-        <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 md:mb-12 font-light px-4">
+        <p className="text-lg md:text-xl text-gray-300 mb-12 font-light">
           Engineering-driven solutions for startups & growing businesses.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <a
             href="#contact"
             className="group px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center gap-2 min-w-[200px] justify-center"
