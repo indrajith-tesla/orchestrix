@@ -70,13 +70,20 @@ export default function Footer() {
           <div className="space-y-3 sm:space-y-4">
             <h5 className="text-xs sm:text-sm uppercase tracking-[0.2em] text-gray-400">Connect</h5>
             <div className="flex gap-2 sm:gap-3">
-              {[Linkedin, Twitter, Github].map((Icon) => (
+              {[
+                { Icon: Linkedin, name: 'LinkedIn', url: 'https://www.linkedin.com/company/orchestrix' },
+                { Icon: Twitter, name: 'Twitter', url: 'https://twitter.com/orchestrix' },
+                { Icon: Github, name: 'GitHub', url: 'https://github.com/orchestrix' }
+              ].map(({ Icon, name, url }) => (
                 <a
-                  key={Icon.displayName || Icon.name}
-                  href="#"
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit OrchestriX on ${name}`}
                   className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-white/20 transition"
                 >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
                 </a>
               ))}
             </div>
