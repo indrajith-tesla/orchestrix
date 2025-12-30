@@ -14,31 +14,31 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
       </div>
 
-      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-        <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold text-white mb-8 tracking-tight animate-fade-in">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-5xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 tracking-tight animate-fade-in">
           OrchestriX
         </h1>
 
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-white mb-6 tracking-wide">
+        <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-light text-white mb-4 sm:mb-6 tracking-wide px-2">
           Building Smart, Scalable & Affordable Digital Solutions
         </h2>
 
-        <p className="text-lg md:text-xl text-gray-300 mb-12 font-light">
+        <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 sm:mb-12 font-light px-2">
           Engineering-driven solutions for startups & growing businesses.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
           <a
             href="#contact"
-            className="group px-8 py-4 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center gap-2 min-w-[200px] justify-center"
+            className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-all duration-300 flex items-center gap-2 justify-center text-sm sm:text-base"
           >
             Get in Touch
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
           </a>
 
           <a
             href="#solutions"
-            className="group px-8 py-4 bg-transparent text-white font-medium rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 min-w-[200px] justify-center flex items-center"
+            className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-transparent text-white font-medium rounded-full border-2 border-white hover:bg-white hover:text-black transition-all duration-300 justify-center flex items-center text-sm sm:text-base"
           >
             Our Services
           </a>
