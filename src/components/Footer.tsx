@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-4 sm:pt-6 border-t border-white/10 text-center text-gray-500 text-xs sm:text-sm">
-          <p>&copy; 2024 OrchestriX. Crafted with care.</p>
+          <p>&copy; 2026 OrchestriX. Crafted with care.</p>
         </div>
       </div>
     </footer>
