@@ -264,21 +264,6 @@
     .summary-card .cost-inr  { font-size: 17px; font-weight: 800; }
     .summary-card .cost-usd  { font-size: 11px; opacity: 0.8; margin-top: 2px; }
     .summary-card .users     { font-size: 10px; opacity: 0.7; margin-top: 6px; }
-    .tips-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 8px 0;
-    }
-    .tip-card {
-      background: #fffbf0;
-      border: 1px solid #f0d080;
-      border-left: 4px solid #f0a500;
-      border-radius: 6px;
-      padding: 10px 14px;
-    }
-    .tip-card .tip-title { font-weight: 700; color: #c07800; font-size: 12px; margin-bottom: 3px; }
-    .tip-card .tip-desc  { font-size: 11px; color: #555; }
     .note-box {
       background: #f0f7ff;
       border: 1px solid #b3d1f5;
@@ -615,27 +600,6 @@
       <tr><td>Backups</td><td>AWS Backup</td><td>Automated DB backups</td><td>Monthly</td></tr>
     </tbody>
   </table>
-
-  <!-- COST SAVING TIPS -->
-  <div class="section-title"><span class="icon">$</span> Cost Saving Strategies</div>
-  <div class="tips-grid">
-    <div class="tip-card">
-      <div class="tip-title">Reserved Instances (1-Year)</div>
-      <div class="tip-desc">Commit to 1 year of EC2 &amp; RDS usage and save 30&ndash;40% vs On-Demand pricing. Best once traffic is stable after 3&ndash;6 months.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-title">Skip ALB at Launch</div>
-      <div class="tip-desc">Use Nginx as a reverse proxy on EC2 instead of ALB. Saves &#8377;1,533/month. Add ALB only when traffic &amp; uptime SLAs require it.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-title">Single-AZ Database to Start</div>
-      <div class="tip-desc">Skip Multi-AZ (High Availability) in early phase. This saves ~&#8377;2,625/month. Enable Multi-AZ only when the app has paying users or SLA requirements.</div>
-    </div>
-    <div class="tip-card">
-      <div class="tip-title">Right-Size Instances</div>
-      <div class="tip-desc">Start with t3.micro / t3.small and scale up only when CPU or memory consistently exceeds 70%. Over-provisioning is the most common cost driver.</div>
-    </div>
-  </div>
 
   <!-- GROWTH PATH -->
   <div class="section-title"><span class="icon">G</span> Recommended Growth Path</div>
