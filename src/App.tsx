@@ -3,6 +3,7 @@ import About from './components/About';
 import Solutions from './components/Solutions';
 import Why from './components/Why';
 import WhoWeServe from './components/WhoWeServe';
+import Projects from './components/Projects';
 import Footer from './components/Footer';
 import StructuredData from './components/StructuredData';
 
@@ -21,6 +22,7 @@ function App() {
           <Solutions />
           <Why />
           <WhoWeServe />
+          <Projects />
           <About />
           <Footer />
         </main>
