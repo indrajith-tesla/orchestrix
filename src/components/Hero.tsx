@@ -55,15 +55,15 @@ export default function Hero() {
 
           <div className="pt-8 flex flex-wrap gap-8 opacity-0 animate-[rise_1.6s_cubic-bezier(0.16,1,0.3,1)_1s_forwards]">
             <a
-              href="#contact"
+              href="#projects"
               className="group flex items-center gap-6 text-white no-underline"
             >
               <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
                 <ArrowRight className="w-6 h-6" />
               </div>
               <div className="space-y-1">
-                <span className="block text-sm font-bold uppercase tracking-widest">Start Consultation</span>
-                <span className="block text-[10px] text-slate-500 uppercase tracking-widest">Available for Q1 2026</span>
+                <span className="block text-sm font-bold uppercase tracking-widest">View Our Products</span>
+                <span className="block text-[10px] text-slate-500 uppercase tracking-widest">Live & Deployed</span>
               </div>
             </a>
 
