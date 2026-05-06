@@ -6,6 +6,7 @@
   <title>AWS Hosting Cost Estimate - Orchestrix</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       font-size: 13px;
@@ -14,19 +15,44 @@
       padding: 32px 40px;
       line-height: 1.6;
     }
+
+    /* ── HEADER ── */
     .header {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
       color: white;
       padding: 28px 32px;
       border-radius: 10px;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: 16px;
     }
-    .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
-    .header p { font-size: 12px; opacity: 0.75; }
+    .header-left { flex: 1; min-width: 0; }
+    .header-eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      color: #9CA3AF;
+    }
+    .header-title {
+      margin: 10px 0 6px;
+      font-size: clamp(22px, 4vw, 34px);
+      line-height: 1.1;
+      font-weight: 800;
+      color: #fff;
+      word-break: break-word;
+    }
+    .header-sub {
+      font-size: clamp(13px, 2vw, 16px);
+      color: #D1D5DB;
+      font-weight: 500;
+    }
+    .header-right { text-align: right; flex-shrink: 0; }
+    .header-right .date { font-size: 11px; opacity: 0.7; margin-bottom: 6px; }
     .header-badge {
+      display: inline-block;
       background: #e94560;
       color: white;
       font-size: 11px;
@@ -36,15 +62,16 @@
       white-space: nowrap;
       margin-top: 4px;
     }
-    .header-right { text-align: right; }
-    .header-right .date { font-size: 11px; opacity: 0.7; margin-bottom: 6px; }
+    .header-rate { font-size: 11px; opacity: 0.65; margin-top: 8px; }
+
+    /* ── SECTION TITLE ── */
     .section-title {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       color: #0f3460;
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      margin: 24px 0 10px 0;
+      margin: 24px 0 10px;
       padding-bottom: 5px;
       border-bottom: 2px solid #e94560;
       display: flex;
@@ -61,133 +88,13 @@
       justify-content: center;
       font-size: 10px;
       font-weight: 700;
-    }
-    /* FLOWCHART */
-    .flowchart {
-      background: #f8f9fc;
-      border: 1px solid #e0e4ef;
-      border-radius: 10px;
-      padding: 28px 24px 20px;
-      margin-bottom: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
-    .fc-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      width: 100%;
-    }
-    .fc-node {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border-radius: 10px;
-      padding: 10px 14px;
-      min-width: 120px;
-      max-width: 150px;
-      position: relative;
-    }
-    .fc-node .fc-icon {
-      font-size: 20px;
-      margin-bottom: 4px;
-      line-height: 1;
-    }
-    .fc-node .fc-label {
-      font-size: 11.5px;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    .fc-node .fc-sub {
-      font-size: 10px;
-      opacity: 0.75;
-      margin-top: 2px;
-      line-height: 1.3;
-    }
-    .fc-node.users    { background: #e8f4fd; border: 2px solid #5dade2; color: #1a5276; }
-    .fc-node.dns      { background: #fef9e7; border: 2px solid #f4d03f; color: #7d6608; }
-    .fc-node.cdn      { background: #eaf5fb; border: 2px solid #76d7c4; color: #0e6655; }
-    .fc-node.s3front  { background: #e8f8f5; border: 2px solid #52be80; color: #1e8449; }
-    .fc-node.ec2      { background: #fdf2e9; border: 2px solid #f0a500; color: #784212; }
-    .fc-node.rds      { background: #f4ecf7; border: 2px solid #a569bd; color: #6c3483; }
-    .fc-node.s3store  { background: #fdfefe; border: 2px solid #85c1e9; color: #1a5276; }
-    .fc-node.alb      { background: #fdedec; border: 2px solid #e94560; color: #922b21; }
-
-    /* arrows */
-    .fc-arrow-down {
-      width: 2px;
-      height: 28px;
-      background: #aab7c4;
-      margin: 0 auto;
-      position: relative;
-    }
-    .fc-arrow-down::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-      border-top: 8px solid #aab7c4;
-    }
-    .fc-arrow-right {
-      width: 36px;
-      height: 2px;
-      background: #aab7c4;
-      position: relative;
       flex-shrink: 0;
     }
-    .fc-arrow-right::after {
-      content: '';
-      position: absolute;
-      right: -1px;
-      top: 50%;
-      transform: translateY(-50%);
-      border-top: 6px solid transparent;
-      border-bottom: 6px solid transparent;
-      border-left: 8px solid #aab7c4;
-    }
-    .fc-split {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 40px;
-      width: 100%;
-      position: relative;
-    }
-    .fc-split-line {
-      position: absolute;
-      top: 0;
-      height: 2px;
-      background: #aab7c4;
-      width: 200px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .fc-branch {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .fc-label-pill {
-      font-size: 10px;
-      background: #e0e4ef;
-      color: #555;
-      border-radius: 20px;
-      padding: 2px 10px;
-      margin-bottom: 4px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-    }
+
+    /* ── QUICK SUMMARY CARDS ── */
     .info-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       margin-bottom: 8px;
     }
@@ -205,10 +112,115 @@
     .info-card.green .value { color: #1a7f4b; }
     .info-card.orange { background: #fff8f0; border-color: #f5d5b0; }
     .info-card.orange .value { color: #c06000; }
+
+    /* ── FLOWCHART ── */
+    .flowchart {
+      background: #f8f9fc;
+      border: 1px solid #e0e4ef;
+      border-radius: 10px;
+      padding: 28px 24px 20px;
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: auto;
+    }
+    .fc-inner { min-width: 300px; display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .fc-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .fc-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 10px;
+      padding: 10px 14px;
+      min-width: 110px;
+      max-width: 150px;
+    }
+    .fc-node .fc-icon { font-size: 20px; margin-bottom: 4px; line-height: 1; }
+    .fc-node .fc-label { font-size: 11px; font-weight: 700; line-height: 1.3; }
+    .fc-node .fc-sub { font-size: 10px; opacity: 0.75; margin-top: 2px; line-height: 1.3; }
+
+    .fc-node.users   { background: #e8f4fd; border: 2px solid #5dade2; color: #1a5276; }
+    .fc-node.dns     { background: #fef9e7; border: 2px solid #f4d03f; color: #7d6608; }
+    .fc-node.cdn     { background: #eaf5fb; border: 2px solid #76d7c4; color: #0e6655; }
+    .fc-node.s3front { background: #e8f8f5; border: 2px solid #52be80; color: #1e8449; }
+    .fc-node.ec2     { background: #fdf2e9; border: 2px solid #f0a500; color: #784212; }
+    .fc-node.rds     { background: #f4ecf7; border: 2px solid #a569bd; color: #6c3483; }
+    .fc-node.s3store { background: #fdfefe; border: 2px solid #85c1e9; color: #1a5276; }
+
+    .fc-arrow-down {
+      width: 2px; height: 28px;
+      background: #aab7c4;
+      margin: 0 auto;
+      position: relative;
+    }
+    .fc-arrow-down::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 50%;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #aab7c4;
+    }
+    .fc-split-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .fc-split-line {
+      width: 260px; height: 2px;
+      background: #aab7c4;
+      position: relative;
+    }
+    .fc-split-line::before, .fc-split-line::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      width: 2px; height: 12px;
+      background: #aab7c4;
+    }
+    .fc-split-line::before { left: 0; }
+    .fc-split-line::after  { right: 0; }
+    .fc-split {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 40px;
+      width: 100%;
+    }
+    .fc-branch { display: flex; flex-direction: column; align-items: center; }
+    .fc-label-pill {
+      font-size: 10px;
+      background: #e0e4ef;
+      color: #555;
+      border-radius: 20px;
+      padding: 2px 10px;
+      margin-bottom: 4px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    /* ── TABLES ── */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 8px;
+      border-radius: 0 0 6px 6px;
+    }
     table {
       width: 100%;
+      min-width: 480px;
       border-collapse: collapse;
-      margin-bottom: 8px;
       font-size: 12px;
     }
     thead tr { background: #0f3460; color: white; }
@@ -219,51 +231,66 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      white-space: nowrap;
     }
     thead th:last-child, thead th:nth-last-child(2) { text-align: right; }
     tbody tr:nth-child(even) { background: #f8f9fc; }
     tbody td { padding: 8px 12px; border-bottom: 1px solid #e8ecf5; }
-    tbody td:last-child, tbody td:nth-last-child(2) { text-align: right; font-weight: 500; }
+    tbody td:last-child, tbody td:nth-last-child(2) { text-align: right; font-weight: 500; white-space: nowrap; }
     .total-row { background: #1a1a2e !important; color: white; font-weight: 700; }
-    .total-row td { border: none; font-size: 13px; }
+    .total-row td { border: none; font-size: 12px; white-space: nowrap; }
     .total-row td:last-child, .total-row td:nth-last-child(2) { color: #ffd700; }
     .sub-total-row { background: #e8ecf5 !important; font-weight: 600; }
     .sub-total-row td:last-child, .sub-total-row td:nth-last-child(2) { color: #0f3460; }
     .free-row { background: #f0fff4 !important; }
     .free-row td:last-child { color: #1a7f4b; font-weight: 700; }
+
+    /* ── TIER HEADERS ── */
     .tier-header {
       padding: 10px 16px;
       border-radius: 7px 7px 0 0;
       color: white;
       font-weight: 700;
       font-size: 13px;
-      margin-top: 16px;
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
     }
-    .tier-header span { font-size: 11px; font-weight: 400; opacity: 0.85; margin-left: 8px; }
-    .tier-1 { background: #2a6496; }
-    .tier-2 { background: #0f3460; }
-    .tier-3 { background: #e94560; }
+    .tier-header span {
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.85;
+    }
     .tier-starter { background: #1a7f4b; }
+    .tier-1       { background: #2a6496; }
+    .tier-2       { background: #0f3460; }
+    .tier-3       { background: #e94560; }
+
+    /* ── SUMMARY CARDS ── */
     .summary-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: repeat(4, 1fr);
       gap: 12px;
       margin: 10px 0;
     }
     .summary-card {
       border-radius: 8px;
-      padding: 14px;
+      padding: 14px 10px;
       text-align: center;
       color: white;
     }
-    .summary-card.green-bg  { background: linear-gradient(135deg, #1a7f4b, #28a745); }
-    .summary-card.teal-bg   { background: linear-gradient(135deg, #1a6f8f, #2a9fbf); }
-    .summary-card.blue-bg   { background: linear-gradient(135deg, #0f3460, #1a4a8a); }
-    .summary-card.red-bg    { background: linear-gradient(135deg, #c0392b, #e94560); }
+    .summary-card.green-bg { background: linear-gradient(135deg, #1a7f4b, #28a745); }
+    .summary-card.teal-bg  { background: linear-gradient(135deg, #1a6f8f, #2a9fbf); }
+    .summary-card.blue-bg  { background: linear-gradient(135deg, #0f3460, #1a4a8a); }
+    .summary-card.red-bg   { background: linear-gradient(135deg, #c0392b, #e94560); }
     .summary-card .tier-name { font-size: 10px; opacity: 0.85; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .summary-card .cost-inr  { font-size: 17px; font-weight: 800; }
+    .summary-card .cost-inr  { font-size: clamp(14px, 2.5vw, 17px); font-weight: 800; }
     .summary-card .cost-usd  { font-size: 11px; opacity: 0.8; margin-top: 2px; }
     .summary-card .users     { font-size: 10px; opacity: 0.7; margin-top: 6px; }
+
+    /* ── NOTE & FOOTER ── */
     .note-box {
       background: #f0f7ff;
       border: 1px solid #b3d1f5;
@@ -274,7 +301,7 @@
       color: #1a3a5c;
       margin: 8px 0;
     }
-    .footer {
+    .doc-footer {
       margin-top: 28px;
       padding-top: 14px;
       border-top: 1px solid #e0e4ef;
@@ -282,7 +309,40 @@
       color: #888;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 4px;
     }
+
+    /* ── TABLET (600–899px) ── */
+    @media (max-width: 899px) {
+      body { padding: 20px 24px; }
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+      .header { flex-direction: column; }
+      .header-right { text-align: left; }
+      .fc-split-line { width: 200px; }
+    }
+
+    /* ── MOBILE (≤599px) ── */
+    @media (max-width: 599px) {
+      body { padding: 14px 14px; font-size: 12px; }
+      .header { padding: 18px 16px; gap: 14px; }
+      .header-right { text-align: left; }
+      .info-grid { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .summary-card { padding: 12px 8px; }
+      .summary-card .cost-inr { font-size: 14px; }
+      .section-title { font-size: 12px; }
+      .tier-header { font-size: 12px; padding: 9px 12px; }
+      .tier-header span { display: block; font-size: 10px; }
+      .fc-split { flex-direction: column; align-items: center; gap: 0; }
+      .fc-split-line { display: none; }
+      .fc-node { min-width: 100px; }
+      .note-box { font-size: 11px; }
+      .doc-footer { flex-direction: column; text-align: center; }
+    }
+
+    /* ── PRINT ── */
     @media print {
       body { padding: 20px; font-size: 11px; }
       .header, thead tr, .tier-header, .summary-card, .total-row {
@@ -297,23 +357,15 @@
 
   <!-- HEADER -->
   <div class="header">
-    <div style="padding: 8px 0;">
-      <div style="font-size: 13px; font-weight: 600; letter-spacing: 1.8px; text-transform: uppercase; color: #9CA3AF;">
-        AWS Infrastructure Proposal
-      </div>
-
-      <h1 style="margin: 10px 0 6px; font-size: 34px; line-height: 1.1; font-weight: 800; color: #FFFFFF;">
-        Estimated Monthly AWS Cost
-      </h1>
-
-      <p style="margin: 0; font-size: 16px; color: #D1D5DB; font-weight: 500;">
-        Full-Stack Production Deployment
-      </p>
+    <div class="header-left">
+      <div class="header-eyebrow">AWS Infrastructure Proposal</div>
+      <h1 class="header-title">Estimated Monthly AWS Cost</h1>
+      <p class="header-sub">Full-Stack Production Deployment</p>
     </div>
     <div class="header-right">
       <div class="date">Created: Orchestrix (May 2026)</div>
       <div class="header-badge">AWS Mumbai (ap-south-1)</div>
-      <div style="font-size:11px; opacity:0.65; margin-top:8px;">Exchange Rate: &#8377;94.61 / USD</div>
+      <div class="header-rate">Exchange Rate: &#8377;94.61 / USD</div>
     </div>
   </div>
 
@@ -336,216 +388,219 @@
   <!-- ARCHITECTURE -->
   <div class="section-title"><span class="icon">A</span> Proposed AWS Infrastructure Architecture</div>
   <div class="flowchart">
+    <div class="fc-inner">
 
-    <!-- Row 1: Users -->
-    <div class="fc-row">
-      <div class="fc-node users">
-        <div class="fc-icon">&#128100;</div>
-        <div class="fc-label">Users (India)</div>
-        <div class="fc-sub">Browser / Mobile</div>
-      </div>
-    </div>
-
-    <div class="fc-arrow-down"></div>
-
-    <!-- Row 2: Route 53 -->
-    <div class="fc-row">
-      <div class="fc-node dns">
-        <div class="fc-icon">&#127760;</div>
-        <div class="fc-label">Route 53</div>
-        <div class="fc-sub">DNS Management</div>
-      </div>
-    </div>
-
-    <div class="fc-arrow-down"></div>
-
-    <!-- Row 3: CloudFront -->
-    <div class="fc-row">
-      <div class="fc-node cdn">
-        <div class="fc-icon">&#9729;</div>
-        <div class="fc-label">CloudFront</div>
-        <div class="fc-sub">CDN &amp; Edge Cache<br/>India Edge Nodes</div>
-      </div>
-    </div>
-
-    <div class="fc-arrow-down"></div>
-
-    <!-- Row 4: Split — S3 Frontend + EC2 -->
-    <div style="width:100%; display:flex; flex-direction:column; align-items:center;">
-      <!-- horizontal split line -->
-      <div style="width:260px; height:2px; background:#aab7c4; position:relative;">
-        <div style="position:absolute;left:0;top:-5px;width:2px;height:12px;background:#aab7c4;"></div>
-        <div style="position:absolute;right:0;top:-5px;width:2px;height:12px;background:#aab7c4;"></div>
-      </div>
-      <div class="fc-split" style="margin-top:0;">
-        <!-- Left branch: S3 Frontend -->
-        <div class="fc-branch">
-          <div class="fc-arrow-down" style="height:20px;"></div>
-          <div class="fc-label-pill">Static Files</div>
-          <div class="fc-node s3front">
-            <div class="fc-icon">&#128193;</div>
-            <div class="fc-label">S3 Bucket</div>
-            <div class="fc-sub">Frontend (React)<br/>Static Hosting</div>
-          </div>
+      <div class="fc-row">
+        <div class="fc-node users">
+          <div class="fc-icon">&#128100;</div>
+          <div class="fc-label">Users (India)</div>
+          <div class="fc-sub">Browser / Mobile</div>
         </div>
-        <!-- Right branch: EC2 -->
-        <div class="fc-branch">
-          <div class="fc-arrow-down" style="height:20px;"></div>
-          <div class="fc-label-pill">API Requests</div>
-          <div class="fc-node ec2">
-            <div class="fc-icon">&#128736;</div>
-            <div class="fc-label">EC2 Instance</div>
-            <div class="fc-sub">Backend API<br/>Nginx Reverse Proxy</div>
+      </div>
+      <div class="fc-arrow-down"></div>
+
+      <div class="fc-row">
+        <div class="fc-node dns">
+          <div class="fc-icon">&#127760;</div>
+          <div class="fc-label">Route 53</div>
+          <div class="fc-sub">DNS Management</div>
+        </div>
+      </div>
+      <div class="fc-arrow-down"></div>
+
+      <div class="fc-row">
+        <div class="fc-node cdn">
+          <div class="fc-icon">&#9729;</div>
+          <div class="fc-label">CloudFront</div>
+          <div class="fc-sub">CDN &amp; Edge Cache<br/>India Edge Nodes</div>
+        </div>
+      </div>
+      <div class="fc-arrow-down"></div>
+
+      <!-- Split into S3 Frontend + EC2 Backend -->
+      <div class="fc-split-wrapper">
+        <div class="fc-split-line"></div>
+        <div class="fc-split">
+          <div class="fc-branch">
+            <div class="fc-arrow-down" style="height:20px;"></div>
+            <div class="fc-label-pill">Static Files</div>
+            <div class="fc-node s3front">
+              <div class="fc-icon">&#128193;</div>
+              <div class="fc-label">S3 Bucket</div>
+              <div class="fc-sub">Frontend (React)<br/>Static Hosting</div>
+            </div>
           </div>
-          <div class="fc-arrow-down"></div>
-          <div class="fc-node rds">
-            <div class="fc-icon">&#128451;</div>
-            <div class="fc-label">RDS Database</div>
-            <div class="fc-sub">MySQL / PostgreSQL<br/>Single-AZ</div>
-          </div>
-          <div class="fc-arrow-down"></div>
-          <div class="fc-node s3store">
-            <div class="fc-icon">&#128190;</div>
-            <div class="fc-label">S3 Bucket</div>
-            <div class="fc-sub">File &amp; Image<br/>Storage</div>
+          <div class="fc-branch">
+            <div class="fc-arrow-down" style="height:20px;"></div>
+            <div class="fc-label-pill">API Requests</div>
+            <div class="fc-node ec2">
+              <div class="fc-icon">&#128736;</div>
+              <div class="fc-label">EC2 Instance</div>
+              <div class="fc-sub">Backend API<br/>Nginx Reverse Proxy</div>
+            </div>
+            <div class="fc-arrow-down"></div>
+            <div class="fc-node rds">
+              <div class="fc-icon">&#128451;</div>
+              <div class="fc-label">RDS Database</div>
+              <div class="fc-sub">MySQL / PostgreSQL<br/>Single-AZ</div>
+            </div>
+            <div class="fc-arrow-down"></div>
+            <div class="fc-node s3store">
+              <div class="fc-icon">&#128190;</div>
+              <div class="fc-label">S3 Bucket</div>
+              <div class="fc-sub">File &amp; Image<br/>Storage</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
 
-<!-- DOMAIN & SETUP COSTS -->
-<div class="section-title"><span class="icon">1</span> Domain &amp; Initial Setup (One Time)</div>
-
-<table>
-  <thead>
-    <tr>
-      <th>Service</th>
-      <th>Description</th>
-      <th>USD</th>
-      <th>INR</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><strong>.com Domain</strong></td>
-      <td>Registered via Route 53 or GoDaddy (includes annual renewal)</td>
-      <td>$12 / year</td>
-      <td>&#8377;1,135 / year</td>
-    </tr>
-
-    <tr>
-      <td><strong>.in Domain (Optional)</strong></td>
-      <td>Lower-cost India-focused domain alternative</td>
-      <td>$3 / year</td>
-      <td>&#8377;284 / year</td>
-    </tr>
-
-    <tr class="free-row">
-      <td><strong>SSL/TLS Certificate</strong></td>
-      <td>Managed by AWS ACM with automatic renewal at no additional cost</td>
-      <td>Free</td>
-      <td>Free</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- DOMAIN & SETUP -->
+  <div class="section-title"><span class="icon">1</span> Domain &amp; Initial Setup (One Time)</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Description</th><th>USD</th><th>INR</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>.com Domain</strong></td>
+          <td>Registered via Route 53 or GoDaddy (includes annual renewal)</td>
+          <td>$12 / year</td>
+          <td>&#8377;1,135 / year</td>
+        </tr>
+        <tr>
+          <td><strong>.in Domain (Optional)</strong></td>
+          <td>Lower-cost India-focused domain alternative</td>
+          <td>$3 / year</td>
+          <td>&#8377;284 / year</td>
+        </tr>
+        <tr class="free-row">
+          <td><strong>SSL/TLS Certificate</strong></td>
+          <td>Managed by AWS ACM with automatic renewal at no additional cost</td>
+          <td>Free</td>
+          <td>Free</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- MONTHLY PLANS -->
   <div class="section-title"><span class="icon">T</span> Monthly Cost Plans</div>
 
-  <!-- STARTER PLAN -->
-  <div class="tier-header tier-starter">Starter Plan <span>Up to 300&ndash;500 daily users &middot; No Load Balancer &middot; Nginx on EC2</span></div>
-  <table>
-    <thead>
-      <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Frontend (S3)</td><td>Static React hosting, ~5 GB storage</td><td>$0.13</td><td>&#8377;12</td></tr>
-      <tr><td>CloudFront (CDN)</td><td>20 GB transfer, India edge nodes</td><td>$1.70</td><td>&#8377;161</td></tr>
-      <tr><td><strong>EC2 t3.micro</strong></td><td>2 vCPU, 1 GB RAM + Nginx reverse proxy</td><td>$8.50</td><td>&#8377;804</td></tr>
-      <tr><td><strong>RDS db.t3.micro</strong></td><td>MySQL / PostgreSQL, Single-AZ, 20 GB</td><td>$14.60</td><td>&#8377;1,381</td></tr>
-      <tr><td>RDS Storage</td><td>20 GB gp2 SSD</td><td>$2.30</td><td>&#8377;218</td></tr>
-      <tr><td>Route 53</td><td>Hosted zone + DNS queries</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr><td>S3 Storage (uploads/images)</td><td>5 GB</td><td>$0.13</td><td>&#8377;12</td></tr>
-      <tr><td>Data Transfer (outbound)</td><td>~15 GB/month</td><td>$1.28</td><td>&#8377;121</td></tr>
-      <tr><td>CloudWatch</td><td>Basic logs &amp; metrics</td><td>$0.50</td><td>&#8377;47</td></tr>
-      <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr class="total-row"><td colspan="2">TOTAL · STARTER PLAN</td><td>~$31 / month</td><td>~&#8377;2,947 / month</td></tr>
-    </tbody>
-  </table>
+  <!-- STARTER -->
+  <div class="tier-header tier-starter">
+    Starter Plan
+    <span>Up to 300&ndash;500 daily users &middot; No Load Balancer &middot; Nginx on EC2</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Frontend (S3)</td><td>Static React hosting, ~5 GB storage</td><td>$0.13</td><td>&#8377;12</td></tr>
+        <tr><td>CloudFront (CDN)</td><td>20 GB transfer, India edge nodes</td><td>$1.70</td><td>&#8377;161</td></tr>
+        <tr><td><strong>EC2 t3.micro</strong></td><td>2 vCPU, 1 GB RAM + Nginx reverse proxy</td><td>$8.50</td><td>&#8377;804</td></tr>
+        <tr><td><strong>RDS db.t3.micro</strong></td><td>MySQL / PostgreSQL, Single-AZ, 20 GB</td><td>$14.60</td><td>&#8377;1,381</td></tr>
+        <tr><td>RDS Storage</td><td>20 GB gp2 SSD</td><td>$2.30</td><td>&#8377;218</td></tr>
+        <tr><td>Route 53</td><td>Hosted zone + DNS queries</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr><td>S3 Storage (uploads)</td><td>5 GB</td><td>$0.13</td><td>&#8377;12</td></tr>
+        <tr><td>Data Transfer (outbound)</td><td>~15 GB/month</td><td>$1.28</td><td>&#8377;121</td></tr>
+        <tr><td>CloudWatch</td><td>Basic logs &amp; metrics</td><td>$0.50</td><td>&#8377;47</td></tr>
+        <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr class="total-row"><td colspan="2">TOTAL · STARTER PLAN</td><td>~$31 / month</td><td>~&#8377;2,947 / month</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- PROFESSIONAL PLAN -->
-  <div class="tier-header tier-1" style="margin-top:20px;">Professional Plan <span>Up to 500&ndash;1,000 daily users &middot; With Load Balancer</span></div>
-  <table>
-    <thead>
-      <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Frontend (S3)</td><td>Static React hosting, ~5 GB storage</td><td>$0.13</td><td>&#8377;12</td></tr>
-      <tr><td>CloudFront (CDN)</td><td>50 GB transfer, India edge nodes</td><td>$4.25</td><td>&#8377;402</td></tr>
-      <tr><td>Backend (EC2 t3.small)</td><td>2 vCPU, 2 GB RAM, On-Demand</td><td>$16.20</td><td>&#8377;1,533</td></tr>
-      <tr><td>Database (RDS t3.micro)</td><td>MySQL / PostgreSQL, Single-AZ</td><td>$14.60</td><td>&#8377;1,381</td></tr>
-      <tr><td>RDS Storage</td><td>20 GB gp2 SSD</td><td>$2.30</td><td>&#8377;218</td></tr>
-      <tr><td>Application Load Balancer</td><td>~10 LCU/month</td><td>$16.20</td><td>&#8377;1,533</td></tr>
-      <tr><td>Route 53</td><td>Hosted zone + DNS queries</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr><td>S3 Storage (uploads/images)</td><td>10 GB</td><td>$0.25</td><td>&#8377;24</td></tr>
-      <tr><td>Data Transfer (outbound)</td><td>~20 GB/month</td><td>$1.70</td><td>&#8377;161</td></tr>
-      <tr><td>CloudWatch</td><td>Basic logs &amp; metrics</td><td>$3.00</td><td>&#8377;284</td></tr>
-      <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr class="total-row"><td colspan="2">TOTAL · PROFESSIONAL PLAN</td><td>~$60 / month</td><td>~&#8377;5,677 / month</td></tr>
-    </tbody>
-  </table>
+  <!-- PROFESSIONAL -->
+  <div class="tier-header tier-1">
+    Professional Plan
+    <span>Up to 500&ndash;1,000 daily users &middot; With Load Balancer</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Frontend (S3)</td><td>Static React hosting, ~5 GB storage</td><td>$0.13</td><td>&#8377;12</td></tr>
+        <tr><td>CloudFront (CDN)</td><td>50 GB transfer, India edge nodes</td><td>$4.25</td><td>&#8377;402</td></tr>
+        <tr><td>Backend (EC2 t3.small)</td><td>2 vCPU, 2 GB RAM, On-Demand</td><td>$16.20</td><td>&#8377;1,533</td></tr>
+        <tr><td>Database (RDS t3.micro)</td><td>MySQL / PostgreSQL, Single-AZ</td><td>$14.60</td><td>&#8377;1,381</td></tr>
+        <tr><td>RDS Storage</td><td>20 GB gp2 SSD</td><td>$2.30</td><td>&#8377;218</td></tr>
+        <tr><td>Application Load Balancer</td><td>~10 LCU/month</td><td>$16.20</td><td>&#8377;1,533</td></tr>
+        <tr><td>Route 53</td><td>Hosted zone + DNS queries</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr><td>S3 Storage (uploads)</td><td>10 GB</td><td>$0.25</td><td>&#8377;24</td></tr>
+        <tr><td>Data Transfer (outbound)</td><td>~20 GB/month</td><td>$1.70</td><td>&#8377;161</td></tr>
+        <tr><td>CloudWatch</td><td>Basic logs &amp; metrics</td><td>$3.00</td><td>&#8377;284</td></tr>
+        <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr class="total-row"><td colspan="2">TOTAL · PROFESSIONAL PLAN</td><td>~$60 / month</td><td>~&#8377;5,677 / month</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- GROWTH PLAN -->
-  <div class="tier-header tier-2">Growth Plan <span>1,000&ndash;10,000 daily users &middot; Post-Launch</span></div>
-  <table>
-    <thead>
-      <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Frontend (S3)</td><td>Static React hosting, ~10 GB storage</td><td>$0.25</td><td>&#8377;24</td></tr>
-      <tr><td>CloudFront (CDN)</td><td>200 GB transfer, India edge nodes</td><td>$16.00</td><td>&#8377;1,514</td></tr>
-      <tr><td>Backend (EC2 t3.medium)</td><td>2 vCPU, 4 GB RAM, On-Demand</td><td>$32.40</td><td>&#8377;3,065</td></tr>
-      <tr><td>Database (RDS t3.small)</td><td>MySQL / PostgreSQL, Single-AZ, 50 GB</td><td>$27.74</td><td>&#8377;2,625</td></tr>
-      <tr><td>RDS Multi-AZ (optional)</td><td>High availability, recommended for production</td><td>+$27.74</td><td>+&#8377;2,625</td></tr>
-      <tr><td>Application Load Balancer</td><td>~30 LCU/month</td><td>$20.00</td><td>&#8377;1,892</td></tr>
-      <tr><td>Route 53</td><td>Hosted zone + queries</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr><td>S3 Storage (uploads/images)</td><td>50 GB</td><td>$1.25</td><td>&#8377;118</td></tr>
-      <tr><td>Data Transfer (outbound)</td><td>~100 GB/month</td><td>$8.50</td><td>&#8377;804</td></tr>
-      <tr><td>CloudWatch</td><td>Logs, metrics, alarms</td><td>$5.00</td><td>&#8377;473</td></tr>
-      <tr><td>SES (Email Service)</td><td>10,000 emails/month</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr><td>AWS Backup</td><td>Automated DB backups</td><td>$2.50</td><td>&#8377;237</td></tr>
-      <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr class="sub-total-row"><td colspan="2">TOTAL · GROWTH PLAN (without Multi-AZ)</td><td>~$116 / month</td><td>~&#8377;10,975 / month</td></tr>
-      <tr class="total-row"><td colspan="2">TOTAL · GROWTH PLAN (with Multi-AZ)</td><td>~$144 / month</td><td>~&#8377;13,624 / month</td></tr>
-    </tbody>
-  </table>
+  <!-- GROWTH -->
+  <div class="tier-header tier-2">
+    Growth Plan
+    <span>1,000&ndash;10,000 daily users &middot; Post-Launch</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Frontend (S3)</td><td>Static React hosting, ~10 GB storage</td><td>$0.25</td><td>&#8377;24</td></tr>
+        <tr><td>CloudFront (CDN)</td><td>200 GB transfer, India edge nodes</td><td>$16.00</td><td>&#8377;1,514</td></tr>
+        <tr><td>Backend (EC2 t3.medium)</td><td>2 vCPU, 4 GB RAM, On-Demand</td><td>$32.40</td><td>&#8377;3,065</td></tr>
+        <tr><td>Database (RDS t3.small)</td><td>MySQL / PostgreSQL, Single-AZ, 50 GB</td><td>$27.74</td><td>&#8377;2,625</td></tr>
+        <tr><td>RDS Multi-AZ (optional)</td><td>High availability, recommended for production</td><td>+$27.74</td><td>+&#8377;2,625</td></tr>
+        <tr><td>Application Load Balancer</td><td>~30 LCU/month</td><td>$20.00</td><td>&#8377;1,892</td></tr>
+        <tr><td>Route 53</td><td>Hosted zone + queries</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr><td>S3 Storage (uploads)</td><td>50 GB</td><td>$1.25</td><td>&#8377;118</td></tr>
+        <tr><td>Data Transfer (outbound)</td><td>~100 GB/month</td><td>$8.50</td><td>&#8377;804</td></tr>
+        <tr><td>CloudWatch</td><td>Logs, metrics, alarms</td><td>$5.00</td><td>&#8377;473</td></tr>
+        <tr><td>SES (Email Service)</td><td>10,000 emails/month</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr><td>AWS Backup</td><td>Automated DB backups</td><td>$2.50</td><td>&#8377;237</td></tr>
+        <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr class="sub-total-row"><td colspan="2">TOTAL · GROWTH PLAN (without Multi-AZ)</td><td>~$116 / month</td><td>~&#8377;10,975 / month</td></tr>
+        <tr class="total-row"><td colspan="2">TOTAL · GROWTH PLAN (with Multi-AZ)</td><td>~$144 / month</td><td>~&#8377;13,624 / month</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-  <!-- ENTERPRISE PLAN -->
-  <div class="tier-header tier-3">Enterprise Plan <span>10,000+ daily users &middot; High Availability</span></div>
-  <table>
-    <thead>
-      <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Frontend (S3 + CloudFront)</td><td>500 GB transfer, India edge</td><td>$35.00</td><td>&#8377;3,311</td></tr>
-      <tr><td>Backend (EC2 t3.large x2)</td><td>Auto Scaling Group, 2 instances</td><td>$130.00</td><td>&#8377;12,299</td></tr>
-      <tr><td>Database (RDS t3.medium Multi-AZ)</td><td>MySQL/PostgreSQL, 100 GB SSD, HA</td><td>$100.00</td><td>&#8377;9,461</td></tr>
-      <tr><td>ElastiCache (Redis)</td><td>t3.micro, session / cache layer</td><td>$13.00</td><td>&#8377;1,230</td></tr>
-      <tr><td>Application Load Balancer</td><td>High traffic, ~50 LCU</td><td>$25.00</td><td>&#8377;2,365</td></tr>
-      <tr><td>Route 53</td><td>Hosted zone + health checks</td><td>$3.00</td><td>&#8377;284</td></tr>
-      <tr><td>S3 Storage (uploads/images)</td><td>200 GB</td><td>$5.00</td><td>&#8377;473</td></tr>
-      <tr><td>Data Transfer (outbound)</td><td>~500 GB/month</td><td>$42.00</td><td>&#8377;3,974</td></tr>
-      <tr><td>CloudWatch + X-Ray</td><td>Full observability stack</td><td>$15.00</td><td>&#8377;1,419</td></tr>
-      <tr><td>WAF (Web Application Firewall)</td><td>Security, DDoS protection</td><td>$10.00</td><td>&#8377;946</td></tr>
-      <tr><td>SES (Email Service)</td><td>50,000 emails/month</td><td>$5.00</td><td>&#8377;473</td></tr>
-      <tr><td>AWS Backup</td><td>Full backup strategy</td><td>$10.00</td><td>&#8377;946</td></tr>
-      <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
-      <tr class="total-row"><td colspan="2">TOTAL · ENTERPRISE PLAN</td><td>~$394 / month</td><td>~&#8377;37,276 / month</td></tr>
-    </tbody>
-  </table>
+  <!-- ENTERPRISE -->
+  <div class="tier-header tier-3">
+    Enterprise Plan
+    <span>10,000+ daily users &middot; High Availability</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>Configuration</th><th>USD/month</th><th>INR/month</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Frontend (S3 + CloudFront)</td><td>500 GB transfer, India edge</td><td>$35.00</td><td>&#8377;3,311</td></tr>
+        <tr><td>Backend (EC2 t3.large x2)</td><td>Auto Scaling Group, 2 instances</td><td>$130.00</td><td>&#8377;12,299</td></tr>
+        <tr><td>Database (RDS t3.medium Multi-AZ)</td><td>MySQL/PostgreSQL, 100 GB SSD, HA</td><td>$100.00</td><td>&#8377;9,461</td></tr>
+        <tr><td>ElastiCache (Redis)</td><td>t3.micro, session / cache layer</td><td>$13.00</td><td>&#8377;1,230</td></tr>
+        <tr><td>Application Load Balancer</td><td>High traffic, ~50 LCU</td><td>$25.00</td><td>&#8377;2,365</td></tr>
+        <tr><td>Route 53</td><td>Hosted zone + health checks</td><td>$3.00</td><td>&#8377;284</td></tr>
+        <tr><td>S3 Storage (uploads)</td><td>200 GB</td><td>$5.00</td><td>&#8377;473</td></tr>
+        <tr><td>Data Transfer (outbound)</td><td>~500 GB/month</td><td>$42.00</td><td>&#8377;3,974</td></tr>
+        <tr><td>CloudWatch + X-Ray</td><td>Full observability stack</td><td>$15.00</td><td>&#8377;1,419</td></tr>
+        <tr><td>WAF (Web Application Firewall)</td><td>Security, DDoS protection</td><td>$10.00</td><td>&#8377;946</td></tr>
+        <tr><td>SES (Email Service)</td><td>50,000 emails/month</td><td>$5.00</td><td>&#8377;473</td></tr>
+        <tr><td>AWS Backup</td><td>Full backup strategy</td><td>$10.00</td><td>&#8377;946</td></tr>
+        <tr><td>Domain (amortized monthly)</td><td>$12/year &divide; 12</td><td>$1.00</td><td>&#8377;95</td></tr>
+        <tr class="total-row"><td colspan="2">TOTAL · ENTERPRISE PLAN</td><td>~$394 / month</td><td>~&#8377;37,276 / month</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- SUMMARY CARDS -->
   <div class="section-title"><span class="icon">S</span> Cost Summary at a Glance</div>
@@ -578,62 +633,66 @@
 
   <!-- SERVICES CHECKLIST -->
   <div class="section-title"><span class="icon">C</span> Complete Services Checklist</div>
-  <table>
-    <thead>
-      <tr><th>Category</th><th>AWS Service</th><th>Purpose</th><th>Cost Type</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Domain</td><td>Route 53 / GoDaddy</td><td>.com or .in domain name</td><td>Annual (&#8377;1,135/yr)</td></tr>
-      <tr class="free-row"><td>SSL Certificate</td><td>AWS ACM</td><td>HTTPS encryption, auto-renews</td><td><strong>FREE</strong></td></tr>
-      <tr><td>DNS Management</td><td>Route 53</td><td>Domain routing &amp; health checks</td><td>Monthly (~&#8377;95)</td></tr>
-      <tr><td>Frontend Hosting</td><td>S3 Bucket</td><td>React app static files</td><td>Monthly (very low)</td></tr>
-      <tr><td>CDN / Caching</td><td>CloudFront</td><td>Fast delivery via India edge</td><td>Monthly</td></tr>
-      <tr><td>Backend API</td><td>EC2 (t3 series)</td><td>Application/API server</td><td>Monthly</td></tr>
-      <tr><td>Reverse Proxy</td><td>Nginx on EC2</td><td>Routes traffic, handles SSL</td><td>Included in EC2</td></tr>
-      <tr><td>Database</td><td>RDS MySQL / PostgreSQL</td><td>Structured data storage</td><td>Monthly</td></tr>
-      <tr><td>File / Image Storage</td><td>S3 Bucket</td><td>User uploads, college images</td><td>Monthly (per GB)</td></tr>
-      <tr><td>Load Balancer</td><td>ALB</td><td>Traffic distribution (Professional+)</td><td>Monthly</td></tr>
-      <tr><td>Cache Layer</td><td>ElastiCache Redis</td><td>Session &amp; query caching (Enterprise)</td><td>Monthly</td></tr>
-      <tr><td>Email Service</td><td>SES</td><td>OTP, notifications, alerts</td><td>Monthly (low)</td></tr>
-      <tr><td>Monitoring</td><td>CloudWatch</td><td>Logs, metrics, alarms</td><td>Monthly</td></tr>
-      <tr><td>Security</td><td>WAF</td><td>DDoS &amp; bot protection (Enterprise)</td><td>Monthly</td></tr>
-      <tr><td>Backups</td><td>AWS Backup</td><td>Automated DB backups</td><td>Monthly</td></tr>
-    </tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Category</th><th>AWS Service</th><th>Purpose</th><th>Cost Type</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Domain</td><td>Route 53 / GoDaddy</td><td>.com or .in domain name</td><td>Annual (&#8377;1,135/yr)</td></tr>
+        <tr class="free-row"><td>SSL Certificate</td><td>AWS ACM</td><td>HTTPS encryption, auto-renews</td><td><strong>FREE</strong></td></tr>
+        <tr><td>DNS Management</td><td>Route 53</td><td>Domain routing &amp; health checks</td><td>Monthly (~&#8377;95)</td></tr>
+        <tr><td>Frontend Hosting</td><td>S3 Bucket</td><td>React app static files</td><td>Monthly (very low)</td></tr>
+        <tr><td>CDN / Caching</td><td>CloudFront</td><td>Fast delivery via India edge</td><td>Monthly</td></tr>
+        <tr><td>Backend API</td><td>EC2 (t3 series)</td><td>Application/API server</td><td>Monthly</td></tr>
+        <tr><td>Reverse Proxy</td><td>Nginx on EC2</td><td>Routes traffic, handles SSL</td><td>Included in EC2</td></tr>
+        <tr><td>Database</td><td>RDS MySQL / PostgreSQL</td><td>Structured data storage</td><td>Monthly</td></tr>
+        <tr><td>File / Image Storage</td><td>S3 Bucket</td><td>User uploads, images</td><td>Monthly (per GB)</td></tr>
+        <tr><td>Load Balancer</td><td>ALB</td><td>Traffic distribution (Professional+)</td><td>Monthly</td></tr>
+        <tr><td>Cache Layer</td><td>ElastiCache Redis</td><td>Session &amp; query caching (Enterprise)</td><td>Monthly</td></tr>
+        <tr><td>Email Service</td><td>SES</td><td>OTP, notifications, alerts</td><td>Monthly (low)</td></tr>
+        <tr><td>Monitoring</td><td>CloudWatch</td><td>Logs, metrics, alarms</td><td>Monthly</td></tr>
+        <tr><td>Security</td><td>WAF</td><td>DDoS &amp; bot protection (Enterprise)</td><td>Monthly</td></tr>
+        <tr><td>Backups</td><td>AWS Backup</td><td>Automated DB backups</td><td>Monthly</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- GROWTH PATH -->
   <div class="section-title"><span class="icon">G</span> Recommended Growth Path</div>
-  <table>
-    <thead>
-      <tr><th>Phase</th><th>When to Use</th><th>Plan</th><th>Monthly Cost (INR)</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Launch</strong></td>
-        <td>Live app, low traffic, early users</td>
-        <td>Starter Plan</td>
-        <td>~&#8377;2,947</td>
-      </tr>
-      <tr>
-        <td><strong>Growth Phase</strong></td>
-        <td>Marketing push, traffic increases</td>
-        <td>Professional Plan</td>
-        <td>~&#8377;5,677</td>
-      </tr>
-      <tr>
-        <td><strong>Scale Phase</strong></td>
-        <td>High traffic, post-product-market fit</td>
-        <td>Growth Plan</td>
-        <td>~&#8377;10,975</td>
-      </tr>
-      <tr>
-        <td><strong>Enterprise Phase</strong></td>
-        <td>High volume, enterprise SLA, HA required</td>
-        <td>Enterprise Plan</td>
-        <td>~&#8377;37,276</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>When to Use</th><th>Plan</th><th>Monthly Cost (INR)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Launch</strong></td>
+          <td>Live app, low traffic, early users</td>
+          <td>Starter Plan</td>
+          <td>~&#8377;2,947</td>
+        </tr>
+        <tr>
+          <td><strong>Growth Phase</strong></td>
+          <td>Marketing push, traffic increases</td>
+          <td>Professional Plan</td>
+          <td>~&#8377;5,677</td>
+        </tr>
+        <tr>
+          <td><strong>Scale Phase</strong></td>
+          <td>High traffic, post-product-market fit</td>
+          <td>Growth Plan</td>
+          <td>~&#8377;10,975</td>
+        </tr>
+        <tr>
+          <td><strong>Enterprise Phase</strong></td>
+          <td>High volume, enterprise SLA, HA required</td>
+          <td>Enterprise Plan</td>
+          <td>~&#8377;37,276</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- NOTE -->
   <div class="note-box">
@@ -644,7 +703,7 @@
   </div>
 
   <!-- FOOTER -->
-  <div class="footer">
+  <div class="doc-footer">
     <span>Orchestrix &middot; AWS Hosting Cost Estimate &middot; Confidential</span>
     <span>Region: AWS Mumbai (ap-south-1) &middot; May 2026 &middot; Rate: &#8377;94.61 / USD</span>
   </div>
