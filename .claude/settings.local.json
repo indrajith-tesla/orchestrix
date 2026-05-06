@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /d F:\\\\Orchestrix\\\\orchestrix)",
+      "Bash(dir /s /b)",
+      "PowerShell(head *)",
+      "Bash(git push *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
