@@ -1,4 +1,4 @@
-import { Mail, Linkedin, Twitter, Github } from 'lucide-react';
+import { Mail, Linkedin, Twitter, Github, FileText } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -62,6 +62,17 @@ export default function Footer() {
               <li>
                 <a href="#contact" className="hover:text-white transition-colors">
                   Contact
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/AWS-Hosting-Cost-Estimate.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors inline-flex items-center gap-1.5"
+                >
+                  <FileText className="w-3 h-3 shrink-0" />
+                  Hosting Estimate
                 </a>
               </li>
             </ul>
