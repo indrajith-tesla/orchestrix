@@ -10,20 +10,20 @@ const values = [
   {
     icon: Award,
     label: 'Quality',
-    desc: 'Testing, monitoring, clarity—by default.',
-    gradient: 'from-purple-500 to-cyan-400',
+    desc: 'Testing, monitoring, and clarity by default.',
+    gradient: 'from-violet-600 to-blue-500',
   },
   {
     icon: Eye,
     label: 'Transparency',
-    desc: 'Plan, risks, progress—every week.',
-    gradient: 'from-cyan-400 to-amber-400',
+    desc: 'Plan, risks, and progress every week.',
+    gradient: 'from-blue-500 to-purple-500',
   },
   {
     icon: TrendingUp,
     label: 'Improvement',
     desc: 'Faster, safer, easier to change.',
-    gradient: 'from-amber-400 via-purple-500 to-cyan-400',
+    gradient: 'from-violet-600 via-purple-500 to-blue-500',
   },
 ];
 
@@ -37,7 +37,7 @@ export default function Values() {
           </span>
           <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight px-2">
             Principles that keep us sharp
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-purple-300 via-cyan-400 to-amber-300">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#7C3AED] via-[#A855F7] to-[#3B82F6]">
               every release trustworthy.
             </span>
           </h2>

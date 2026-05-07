@@ -47,13 +47,13 @@ const partners = [
 
 export default function WhoWeServe() {
   return (
-    <section id="partnerships" className="py-24 sm:py-32 relative overflow-hidden bg-[#020617]">
+    <section id="partnerships" className="py-12 sm:py-16 relative overflow-hidden bg-[#050816]">
       {/* Global Architectural Grid */}
       <div className="absolute inset-0 architectural-grid opacity-10 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-cyan-200">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-violet-200">
             Social Proof
           </span>
           <h2 className="mt-4 sm:mt-6 text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
@@ -74,18 +74,18 @@ export default function WhoWeServe() {
                   className="absolute inset-0 grayscale opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
                   style={{ backgroundImage: `url(${partner.image})` }}
                 />
-                <div className="absolute inset-0 bg-cyan-950/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-700" />
+                <div className="absolute inset-0 bg-violet-950/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-700" />
 
                 {/* ID Tag overlay */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-[#020617]/80 backdrop-blur-md border border-white/10">
-                  <span className="text-[10px] font-mono text-cyan-500/80 tracking-tighter">{partner.id}</span>
+                <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-[#050816]/80 backdrop-blur-md border border-white/10">
+                  <span className="text-[10px] font-mono text-violet-500/80 tracking-tighter">{partner.id}</span>
                 </div>
               </div>
 
               <div className="p-8 space-y-6">
                 <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/5 group-hover:border-cyan-500/30 group-hover:bg-cyan-500/5 transition-all duration-500">
-                    <partner.icon className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors" />
+                  <div className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/5 group-hover:border-violet-500/30 group-hover:bg-violet-500/5 transition-all duration-500">
+                    <partner.icon className="w-4 h-4 text-slate-500 group-hover:text-violet-400 transition-colors" />
                   </div>
                   <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white">
                     {partner.label}
@@ -93,7 +93,7 @@ export default function WhoWeServe() {
                 </div>
 
                 <div className="space-y-4">
-                  <div className="h-px w-6 bg-cyan-500/30 group-hover:w-full transition-all duration-700" />
+                  <div className="h-px w-6 bg-violet-500/30 group-hover:w-full transition-all duration-700" />
                   <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-light group-hover:text-slate-300 transition-colors duration-500">
                     {partner.desc}
                   </p>
@@ -105,16 +105,16 @@ export default function WhoWeServe() {
                     REF_CORE // STABLE
                   </span>
                   <div className="flex gap-1">
-                    <div className="w-1 h-1 rounded-full bg-slate-900 group-hover:bg-cyan-500/50 transition-colors duration-500" />
-                    <div className="w-1 h-1 rounded-full bg-slate-900 group-hover:bg-cyan-500/30 transition-colors duration-700" />
+                    <div className="w-1 h-1 rounded-full bg-slate-900 group-hover:bg-violet-500/50 transition-colors duration-500" />
+                    <div className="w-1 h-1 rounded-full bg-slate-900 group-hover:bg-violet-500/30 transition-colors duration-700" />
                   </div>
                 </div>
               </div>
 
               {/* Corner Decorations */}
               <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute top-4 right-4 w-px h-2 bg-cyan-500/30" />
-                <div className="absolute top-4 right-4 w-2 h-px bg-cyan-500/30" />
+                <div className="absolute top-4 right-4 w-px h-2 bg-violet-500/30" />
+                <div className="absolute top-4 right-4 w-2 h-px bg-violet-500/30" />
               </div>
             </div>
           ))}

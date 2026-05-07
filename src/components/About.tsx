@@ -44,7 +44,7 @@ export default function About() {
       suffix: '',
       description: 'With Long Term Vision',
       delay: '0ms',
-      gradient: 'from-cyan-400/20 to-cyan-600/10'
+      gradient: 'from-violet-400/20 to-violet-600/10'
     },
     {
       label: 'Speed',
@@ -74,18 +74,18 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-16 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 relative overflow-hidden">
       {/* Animated background orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
       </div>
 
       <div className="max-w-6xl mx-auto px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-20 items-end">
           <div className="space-y-12">
-            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-cyan-500">
-              <span className="w-12 h-px bg-cyan-500/40" />
+            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.4em] text-violet-500">
+              <span className="w-12 h-px bg-violet-500/40" />
               Architectural Context
             </div>
             <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none">
@@ -108,13 +108,13 @@ export default function About() {
                     <span className="text-[9px] font-bold uppercase tracking-[0.3em] text-slate-500">
                       {metric.label}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-cyan-500/50" />
+                    <span className="w-1 h-1 rounded-full bg-violet-500/50" />
                   </div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl font-bold text-white tracking-tighter">
                       {metric.value}
                     </span>
-                    <span className="text-cyan-500 font-bold text-lg">{metric.suffix}</span>
+                    <span className="text-violet-500 font-bold text-lg">{metric.suffix}</span>
                   </div>
                   <p className="text-[10px] text-slate-600 uppercase tracking-widest leading-relaxed">
                     {metric.description}

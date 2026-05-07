@@ -23,13 +23,13 @@ const solutions = [
 
 export default function Solutions() {
   return (
-    <section id="solutions" className="py-12 sm:py-16 md:py-24 relative overflow-hidden">
+    <section id="solutions" className="py-12 sm:py-16 relative overflow-hidden">
       {/* Background Architectural Grid */}
       <div className="absolute inset-0 architectural-grid opacity-10 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
-          <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-cyan-200">
+          <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-violet-200">
             Our craft
           </span>
           <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight px-2 text-white">
@@ -54,8 +54,8 @@ export default function Solutions() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity" />
 
               <div className="relative flex flex-col items-start gap-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-none border border-white/10 bg-white/5 transition-all duration-500 group-hover:border-cyan-500/50 group-hover:bg-cyan-500/10">
-                  <solution.icon className="w-5 h-5 text-slate-400 transition-colors duration-500 group-hover:text-cyan-400" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-none border border-white/10 bg-white/5 transition-all duration-500 group-hover:border-violet-500/50 group-hover:bg-violet-500/10">
+                  <solution.icon className="w-5 h-5 text-slate-400 transition-colors duration-500 group-hover:text-violet-400" />
                 </div>
                 <div className="space-y-3">
                   <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white">
@@ -69,8 +69,8 @@ export default function Solutions() {
 
               {/* Corner accent */}
               <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute top-4 right-4 w-px h-2 bg-cyan-500/50" />
-                <div className="absolute top-4 right-4 w-2 h-px bg-cyan-500/50" />
+                <div className="absolute top-4 right-4 w-px h-2 bg-violet-500/50" />
+                <div className="absolute top-4 right-4 w-2 h-px bg-violet-500/50" />
               </div>
             </div>
           ))}

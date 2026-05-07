@@ -1,18 +1,22 @@
+import { useState } from 'react';
 import { Mail, Linkedin, Twitter, Github, FileText } from 'lucide-react';
+import PosterModal from './PosterModal';
 
 export default function Footer() {
+  const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
+
   return (
-    <footer id="contact" className="pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10">
+    <footer id="contact" className="pt-10 sm:pt-14 pb-8 sm:pb-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="card glass-border p-6 sm:p-8 md:p-10 mb-8 sm:mb-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 sm:gap-8">
             <div className="space-y-2 sm:space-y-3">
-              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-amber-200">Ready to build?</p>
+              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-violet-300">Ready to build?</p>
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight">
                 Let's ship the next release together.
               </h3>
               <p className="text-sm sm:text-base text-gray-300">
-                Tell us what you're building—we'll share a plan, risks, and a timeline in days, not weeks.
+                Tell us what you're building and we'll share a plan, risks, and a timeline in days, not weeks.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -23,12 +27,12 @@ export default function Footer() {
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <span className="truncate">contact.orchestrix@gmail.com</span>
               </a>
-              <a
-                href="#solutions"
+              <button
+                onClick={() => setCapabilitiesOpen(true)}
                 className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition text-sm sm:text-base text-center"
               >
                 View capabilities
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -119,6 +123,14 @@ export default function Footer() {
           <p>&copy; 2026 OrchestriX. Crafted with care.</p>
         </div>
       </div>
+
+      <PosterModal
+        isOpen={capabilitiesOpen}
+        onClose={() => setCapabilitiesOpen(false)}
+        src="/images/our_capabilities.png"
+        alt="OrchestriX Capabilities"
+        title="Capabilities"
+      />
     </footer>
   );
 }

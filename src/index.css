@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --ox-ink: #0b1021;
-    --ox-graphite: #0f172a;
+    --ox-ink: #050816;
+    --ox-graphite: #111827;
     --ox-iris: #7c3aed;
-    --ox-mint: #22d3ee;
-    --ox-amber: #fbbf24;
-    --ox-bg: #0b1021;
-    --ox-text: #e5e7eb;
-    --ox-muted: #cbd5e1;
-    --ox-card: rgba(255, 255, 255, 0.08);
-    --ox-border: rgba(255, 255, 255, 0.12);
-    --ox-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    --ox-violet: #8b5cf6;
+    --ox-neon: #a855f7;
+    --ox-bg: #050816;
+    --ox-text: #f8fafc;
+    --ox-muted: #94a3b8;
+    --ox-card: rgba(255, 255, 255, 0.06);
+    --ox-border: rgba(255, 255, 255, 0.10);
+    --ox-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
   }
 
   body {
@@ -30,13 +30,13 @@
   }
 
   .theme-dark {
-    --ox-bg: #020617;
+    --ox-bg: #050816;
     --ox-text: #f8fafc;
-    --ox-muted: #64748b;
-    --ox-card: rgba(15, 23, 42, 0.4);
-    --ox-border: rgba(255, 255, 255, 0.05);
-    --ox-accent: #38bdf8;
-    --ox-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+    --ox-muted: #94a3b8;
+    --ox-card: rgba(17, 24, 39, 0.5);
+    --ox-border: rgba(255, 255, 255, 0.06);
+    --ox-accent: #8b5cf6;
+    --ox-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.75);
     color-scheme: dark;
   }
 }
@@ -44,8 +44,8 @@
 @layer utilities {
   .architectural-grid {
     background-image:
-      linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
     mask-image: radial-gradient(circle at center, black, transparent 90%);
   }
@@ -70,10 +70,9 @@
   }
 
   .card:hover {
-    border-color: rgba(56, 189, 248, 0.2);
-    background: rgba(15, 23, 42, 0.6);
+    border-color: rgba(139, 92, 246, 0.25);
+    background: rgba(17, 24, 39, 0.65);
     transform: translateY(-8px);
-    /* box-shadow removed as it's now handled by var(--ox-shadow) and the new hover effect is simpler */
   }
 
   /* .grid-overlay is replaced by .architectural-grid */
@@ -130,9 +129,9 @@
   .text-shimmer {
     background: linear-gradient(to right,
         #ffffff 0%,
-        #22d3ee 25%,
+        #8b5cf6 25%,
         #a855f7 50%,
-        #22d3ee 75%,
+        #7c3aed 75%,
         #ffffff 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
