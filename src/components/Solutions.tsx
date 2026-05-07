@@ -1,4 +1,5 @@
 import { Globe, Smartphone, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const solutions = [
   {
@@ -21,14 +22,21 @@ const solutions = [
   },
 ];
 
+const spring = { type: 'spring' as const, stiffness: 260, damping: 28, mass: 0.85 };
+
 export default function Solutions() {
   return (
     <section id="solutions" className="py-12 sm:py-16 relative overflow-hidden">
-      {/* Background Architectural Grid */}
       <div className="absolute inset-0 architectural-grid opacity-10 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-8 sm:mb-10">
+        <motion.div
+          className="max-w-3xl mx-auto text-center mb-8 sm:mb-10"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={spring}
+        >
           <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-violet-200">
             Our craft
           </span>
@@ -38,15 +46,18 @@ export default function Solutions() {
           <p className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base text-gray-300 px-2">
             Crafting digital excellence through three core pillars of modern engineering.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/5 max-w-6xl mx-auto">
-          {solutions.map((solution) => (
-            <div
+          {solutions.map((solution, i) => (
+            <motion.div
               key={solution.title}
-              className="group relative overflow-hidden border-r border-b border-white/5 px-8 py-10 text-left transition-all duration-700"
+              initial={{ opacity: 0, y: 44 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ ...spring, delay: i * 0.09 }}
+              className="group relative overflow-hidden border-r border-b border-white/5 px-5 py-7 sm:px-8 sm:py-10 text-left transition-all duration-700"
             >
-              {/* Hover Image Reveal */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-all duration-1000 scale-110 group-hover:scale-100 bg-cover bg-center grayscale"
                 style={{ backgroundImage: `url(${solution.image})` }}
@@ -67,12 +78,11 @@ export default function Solutions() {
                 </div>
               </div>
 
-              {/* Corner accent */}
               <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute top-4 right-4 w-px h-2 bg-violet-500/50" />
                 <div className="absolute top-4 right-4 w-2 h-px bg-violet-500/50" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

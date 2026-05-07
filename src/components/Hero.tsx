@@ -31,8 +31,8 @@ export default function Hero() {
         <div className="font-mono text-[10px] text-slate-600">34.0522° N, 118.2437° W // ORX_PRIMARY</div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-12 md:px-24">
-        <div className="max-w-4xl space-y-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-8 md:px-12 lg:px-24">
+        <div className="max-w-4xl space-y-8 sm:space-y-10">
           {/* Badge */}
           <div className="flex items-center gap-3 opacity-0 animate-[rise_1s_cubic-bezier(0.16,1,0.3,1)_0.2s_forwards]">
             <Layers className="w-4 h-4 text-violet-400" />
@@ -41,29 +41,29 @@ export default function Hero() {
 
           {/* Asymmetric Header */}
           <div className="space-y-4">
-            <h1 className="text-7xl sm:text-8xl md:text-9xl font-black text-white tracking-tighter leading-none animate-reveal">
+            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter leading-none animate-reveal">
               OrchestriX.
             </h1>
-            <div className="flex items-center gap-6 opacity-0 animate-[rise_1.2s_cubic-bezier(0.16,1,0.3,1)_0.6s_forwards]">
-              <span className="h-[2px] w-24 bg-violet-500" />
-              <p className="text-xl md:text-2xl font-medium text-slate-300">
+            <div className="flex items-center gap-4 sm:gap-6 opacity-0 animate-[rise_1.2s_cubic-bezier(0.16,1,0.3,1)_0.6s_forwards]">
+              <span className="h-[2px] w-16 sm:w-24 bg-violet-500 shrink-0" />
+              <p className="text-base sm:text-xl md:text-2xl font-medium text-slate-300">
                 Beyond standard development.
               </p>
             </div>
           </div>
 
-          <p className="text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-xl opacity-0 animate-[rise_1.4s_cubic-bezier(0.16,1,0.3,1)_0.8s_forwards]">
+          <p className="text-sm sm:text-lg md:text-xl text-slate-400 font-light leading-relaxed max-w-xl opacity-0 animate-[rise_1.4s_cubic-bezier(0.16,1,0.3,1)_0.8s_forwards]">
             A high-end architectural engineering practice crafting elite digital artifacts
             that define the next decade of product excellence.
           </p>
 
-          <div className="pt-8 flex flex-wrap gap-8 opacity-0 animate-[rise_1.6s_cubic-bezier(0.16,1,0.3,1)_1s_forwards]">
+          <div className="pt-4 sm:pt-8 flex flex-col sm:flex-row flex-wrap gap-5 sm:gap-8 opacity-0 animate-[rise_1.6s_cubic-bezier(0.16,1,0.3,1)_1s_forwards]">
             <button
               onClick={() => setVisionOpen(true)}
-              className="group flex items-center gap-6 text-white bg-transparent border-none cursor-pointer"
+              className="group flex items-center gap-4 sm:gap-6 text-white bg-transparent border-none cursor-pointer"
             >
-              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
-                <Eye className="w-6 h-6" />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-white/20 flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                <Eye className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="space-y-1 text-left">
                 <span className="block text-sm font-bold uppercase tracking-widest">Our Vision</span>
@@ -73,10 +73,10 @@ export default function Hero() {
 
             <a
               href="#projects"
-              className="group flex items-center gap-6 text-white no-underline"
+              className="group flex items-center gap-4 sm:gap-6 text-white no-underline"
             >
-              <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-500">
-                <ArrowRight className="w-6 h-6" />
+              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-white/20 flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div className="space-y-1">
                 <span className="block text-sm font-bold uppercase tracking-widest">View Our Products</span>

@@ -1,4 +1,5 @@
 import { Heart, Award, Eye, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const values = [
   {
@@ -27,11 +28,19 @@ const values = [
   },
 ];
 
+const spring = { type: 'spring' as const, stiffness: 260, damping: 28, mass: 0.85 };
+
 export default function Values() {
   return (
     <section id="values" className="py-12 sm:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-8 sm:mb-12">
+        <motion.div
+          className="text-center mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={spring}
+        >
           <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-purple-200/90">
             Our values
           </span>
@@ -41,12 +50,16 @@ export default function Values() {
               every release trustworthy.
             </span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
-          {values.map((value) => (
-            <div
+          {values.map((value, i) => (
+            <motion.div
               key={value.label}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ ...spring, delay: i * 0.09 }}
               className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 px-4 sm:px-6 py-6 sm:py-8 text-left backdrop-blur-xl transition-all duration-400 hover:bg-white/8 hover:border-white/25 hover:-translate-y-1"
             >
               <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_0%_0%,rgba(251,191,36,0.16),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(168,85,247,0.18),transparent_55%)]" />
@@ -63,7 +76,7 @@ export default function Values() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

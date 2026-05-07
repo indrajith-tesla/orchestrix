@@ -1,4 +1,5 @@
 import { GraduationCap, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const projects = [
   {
@@ -14,14 +15,21 @@ const projects = [
   },
 ];
 
+const spring = { type: 'spring' as const, stiffness: 260, damping: 28, mass: 0.85 };
+
 export default function Projects() {
   return (
     <section id="projects" className="py-12 sm:py-16 relative overflow-hidden">
       <div className="absolute inset-0 architectural-grid opacity-10 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <motion.div
+          className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={spring}
+        >
           <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-violet-200">
             Live Products
           </span>
@@ -32,19 +40,21 @@ export default function Projects() {
           <p className="mt-4 text-sm sm:text-base text-slate-500 max-w-xl leading-relaxed font-light">
             Real products. Real users. Precision-engineered from concept to deployment.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Project Cards Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/5 mx-auto overflow-hidden">
-          {projects.map((project) => (
-            <a
+          {projects.map((project, i) => (
+            <motion.a
               key={project.id}
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ ...spring, delay: i * 0.07 }}
               className="group relative border-r border-b border-white/5 transition-all duration-700 hover:bg-white/[0.02] block"
             >
-              {/* Windowed Image */}
               <div className="relative h-48 overflow-hidden border-b border-white/5">
                 <div
                   className="absolute inset-0 grayscale opacity-25 group-hover:opacity-50 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
@@ -52,25 +62,21 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-violet-950/30 mix-blend-overlay group-hover:bg-transparent transition-all duration-700" />
 
-                {/* ID Tag */}
                 <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-[#050816]/80 backdrop-blur-md border border-white/10">
                   <span className="text-[10px] font-mono text-violet-500/80 tracking-tighter">{project.id}</span>
                 </div>
 
-                {/* Status Badge */}
                 <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 bg-[#050816]/80 backdrop-blur-md border border-violet-500/20">
                   <div className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
                   <span className="text-[9px] font-mono text-violet-400 tracking-widest">{project.status}</span>
                 </div>
 
-                {/* External link arrow on hover */}
                 <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <ArrowUpRight className="w-5 h-5 text-violet-400" />
                 </div>
               </div>
 
-              {/* Card Content */}
-              <div className="p-8 space-y-6">
+              <div className="p-5 sm:p-8 space-y-4 sm:space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/5 group-hover:border-violet-500/30 group-hover:bg-violet-500/5 transition-all duration-500">
                     <project.icon className="w-4 h-4 text-slate-500 group-hover:text-violet-400 transition-colors" />
@@ -92,7 +98,6 @@ export default function Projects() {
                   </p>
                 </div>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
@@ -104,7 +109,6 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* Footer Row */}
                 <div className="pt-2 flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-[10px] font-mono text-slate-700 uppercase tracking-widest group-hover:text-violet-500/70 transition-colors duration-500">
                     <ExternalLink className="w-3 h-3" />
@@ -117,12 +121,11 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Corner Decorations */}
               <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute top-4 right-4 w-px h-2 bg-violet-500/30" />
                 <div className="absolute top-4 right-4 w-2 h-px bg-violet-500/30" />
               </div>
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>

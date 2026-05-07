@@ -1,4 +1,5 @@
 import { Rocket, Building2, AppWindow, BarChart3, Globe, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const partners = [
   {
@@ -6,53 +7,60 @@ const partners = [
     label: 'Engineered Startups',
     desc: 'Bespoke frameworks for teams moving at the speed of thought. Built for scale from iteration zero.',
     image: 'https://images.pexels.com/photos/7070155/pexels-photo-7070155.jpeg?auto=compress&cs=tinysrgb&w=800',
-    id: 'SEC_01'
+    id: 'SEC_01',
   },
   {
     icon: Building2,
     label: 'Strategic SMBs',
     desc: 'Bringing enterprise-grade technical rigor to established organizations demanding modernization.',
     image: 'https://images.pexels.com/photos/380769/pexels-photo-380769.jpeg?auto=compress&cs=tinysrgb&w=800',
-    id: 'SEC_02'
+    id: 'SEC_02',
   },
   {
     icon: AppWindow,
     label: 'Bespoke SaaS',
     desc: 'Crafting product-led engines with absolute structural integrity and automated resilience.',
     image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
-    id: 'SEC_03'
+    id: 'SEC_03',
   },
   {
     icon: BarChart3,
     label: 'Data Sovereignty',
     desc: 'Precision analytics and intelligence layers wired directly into the operational core.',
     image: 'https://images.pexels.com/photos/3183153/pexels-photo-3183153.jpeg?auto=compress&cs=tinysrgb&w=800',
-    id: 'SEC_04'
+    id: 'SEC_04',
   },
   {
     icon: Globe,
     label: 'Global Syndicates',
     desc: 'Distributed systems designed for absolute alignment across jurisdictional boundaries.',
     image: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
-    id: 'SEC_05'
+    id: 'SEC_05',
   },
   {
     icon: TrendingUp,
     label: 'Hyper Scale-ups',
     desc: 'Engineering growth without friction through structural rigor and automated validation.',
     image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=800',
-    id: 'SEC_06'
+    id: 'SEC_06',
   },
 ];
+
+const spring = { type: 'spring' as const, stiffness: 260, damping: 28, mass: 0.85 };
 
 export default function WhoWeServe() {
   return (
     <section id="partnerships" className="py-12 sm:py-16 relative overflow-hidden bg-[#050816]">
-      {/* Global Architectural Grid */}
       <div className="absolute inset-0 architectural-grid opacity-10 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <motion.div
+          className="flex flex-col items-center text-center max-w-3xl mx-auto mb-10 sm:mb-12"
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={spring}
+        >
           <span className="inline-flex items-center justify-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.24em] text-violet-200">
             Social Proof
           </span>
@@ -60,15 +68,18 @@ export default function WhoWeServe() {
             Built for those <br className="sm:hidden" />
             <span className="text-slate-500">who know the difference.</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/5 mx-auto overflow-hidden">
-          {partners.map((partner) => (
-            <div
+          {partners.map((partner, i) => (
+            <motion.div
               key={partner.label}
+              initial={{ opacity: 0, scale: 0.97 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ ...spring, delay: i * 0.07 }}
               className="group relative border-r border-b border-white/5 transition-all duration-700 hover:bg-white/[0.02]"
             >
-              {/* Windowed Image Capture */}
               <div className="relative h-48 overflow-hidden border-b border-white/5">
                 <div
                   className="absolute inset-0 grayscale opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
@@ -76,13 +87,12 @@ export default function WhoWeServe() {
                 />
                 <div className="absolute inset-0 bg-violet-950/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-700" />
 
-                {/* ID Tag overlay */}
                 <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-[#050816]/80 backdrop-blur-md border border-white/10">
                   <span className="text-[10px] font-mono text-violet-500/80 tracking-tighter">{partner.id}</span>
                 </div>
               </div>
 
-              <div className="p-8 space-y-6">
+              <div className="p-5 sm:p-8 space-y-4 sm:space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center border border-white/10 bg-white/5 group-hover:border-violet-500/30 group-hover:bg-violet-500/5 transition-all duration-500">
                     <partner.icon className="w-4 h-4 text-slate-500 group-hover:text-violet-400 transition-colors" />
@@ -99,7 +109,6 @@ export default function WhoWeServe() {
                   </p>
                 </div>
 
-                {/* Technical Coordinates */}
                 <div className="pt-4 flex items-center justify-between">
                   <span className="text-[8px] font-mono text-slate-800 uppercase tracking-widest group-hover:text-slate-600 transition-colors">
                     REF_CORE // STABLE
@@ -111,12 +120,11 @@ export default function WhoWeServe() {
                 </div>
               </div>
 
-              {/* Corner Decorations */}
               <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="absolute top-4 right-4 w-px h-2 bg-violet-500/30" />
                 <div className="absolute top-4 right-4 w-2 h-px bg-violet-500/30" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
