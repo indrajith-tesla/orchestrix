@@ -106,21 +106,6 @@ export default function Hero() {
         <div className="w-px h-20 bg-gradient-to-t from-transparent to-white/8" />
       </div>
 
-      {/* ── Bottom-right available badge ── */}
-      <motion.div
-        className="absolute bottom-10 right-8 hidden lg:flex items-center gap-3 z-10"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.8, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-        </span>
-        <span className="text-[10px] font-mono uppercase tracking-[0.28em] text-slate-500">
-          Available for projects
-        </span>
-      </motion.div>
 
       {/* ── Scroll indicator ── */}
       <motion.button
@@ -269,7 +254,7 @@ export default function Hero() {
       <PosterModal
         isOpen={visionOpen}
         onClose={() => setVisionOpen(false)}
-        src="/images/our_vision.png"
+        src="/images/our_vision.jpg"
         alt="OrchestriX Vision"
         title="Our Vision"
       />

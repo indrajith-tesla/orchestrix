@@ -1,13 +1,9 @@
-import { useState } from 'react';
-import { Mail, Linkedin, Twitter, Github, Instagram, FileText } from 'lucide-react';
+import { Mail, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { motion } from 'framer-motion';
-import PosterModal from './PosterModal';
 
 const spring = { type: 'spring' as const, stiffness: 260, damping: 28, mass: 0.85 };
 
 export default function Footer() {
-  const [capabilitiesOpen, setCapabilitiesOpen] = useState(false);
-
   return (
     <footer id="contact" className="pt-10 sm:pt-14 pb-8 sm:pb-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -36,12 +32,6 @@ export default function Footer() {
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <span className="truncate">contact.orchestrix@gmail.com</span>
               </a>
-              <button
-                onClick={() => setCapabilitiesOpen(true)}
-                className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition text-sm sm:text-base text-center"
-              >
-                View capabilities
-              </button>
             </div>
           </div>
         </motion.div>
@@ -54,7 +44,9 @@ export default function Footer() {
           transition={{ ...spring, delay: 0.12 }}
         >
           <div className="space-y-3 sm:space-y-4">
-            <h4 className="text-xl sm:text-2xl font-bold text-white">OrchestriX</h4>
+            <h4 className="text-xl sm:text-2xl font-bold text-white">
+              Orchestri<span className="text-shimmer">X</span>
+            </h4>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               An engineering studio that blends velocity with rigor for founders and product teams.
             </p>
@@ -80,9 +72,8 @@ export default function Footer() {
                   href="/AWS-Hosting-Cost-Estimate.html"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors inline-flex items-center gap-1.5"
+                  className="hover:text-white transition-colors"
                 >
-                  <FileText className="w-3 h-3 shrink-0" />
                   Hosting Estimate
                 </a>
               </li>
@@ -118,16 +109,6 @@ export default function Footer() {
               >
                 <Twitter className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
               </span>
-              {/* Active — GitHub */}
-              <a
-                href="https://github.com/orchestrix-technologies"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit OrchestriX on GitHub"
-                className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/10 border border-white/10 flex items-center justify-center hover:bg-white/20 transition"
-              >
-                <Github className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
-              </a>
             </div>
             <div className="space-y-1 text-xs sm:text-sm text-gray-300">
               <p>
@@ -150,14 +131,6 @@ export default function Footer() {
           <p>&copy; 2026 OrchestriX. Crafted with care.</p>
         </div>
       </div>
-
-      <PosterModal
-        isOpen={capabilitiesOpen}
-        onClose={() => setCapabilitiesOpen(false)}
-        src="/images/our_capabilities.png"
-        alt="OrchestriX Capabilities"
-        title="Capabilities"
-      />
     </footer>
   );
 }

@@ -5,7 +5,7 @@ const projects = [
   {
     id: 'PRJ_01',
     icon: GraduationCap,
-    title: 'EduFinder',
+    title: 'Campus Connect Co.',
     category: 'EdTech Platform',
     desc: 'A premium college discovery platform helping millions of students find the right institution for their entrance exams. Explore elite Indian colleges, compare rankings, fees, placements, and stay updated on 2026–27 admissions.',
     tags: ['College Finder', 'EdTech', 'React'],

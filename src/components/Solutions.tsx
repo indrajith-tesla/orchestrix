@@ -6,20 +6,20 @@ const solutions = [
   {
     icon: Globe,
     title: 'Building Web Applications',
-    line: 'Modern, Fast and beautiful website that help you attract customers and grow online.',
-    image: 'https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=800',
+    line: 'Modern, fast and beautiful websites that help you attract customers and grow online.',
+    image: 'https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Smartphone,
     title: 'Mobile Apps',
     line: 'We build easy to use mobile apps that work smoothly on both Android and iPhone.',
-    image: 'https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=800',
+    image: 'https://images.pexels.com/photos/887751/pexels-photo-887751.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
   {
     icon: Sparkles,
     title: 'Generative & Agentic AI',
-    line: 'AI that can create content, answer question, automate workflows, and even act independently to complete tasks for you.',
-    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+    line: 'AI that can create content, answer questions, automate workflows, and act independently to complete tasks for you.',
+    image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
   },
 ];
 
@@ -154,7 +154,7 @@ export default function Solutions() {
           </p>
         </div>
 
-        {/* ── Desktop grid (sm and above) — unchanged ── */}
+        {/* ── Desktop grid (sm and above) ── */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-white/5 max-w-6xl mx-auto px-4 sm:px-6">
           {solutions.map((solution, i) => {
             const Icon = solution.icon;
@@ -165,31 +165,35 @@ export default function Solutions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ ...spring, delay: i * 0.09 }}
-                className="group relative overflow-hidden border-r border-b border-white/5 px-5 py-7 sm:px-8 sm:py-10 text-left transition-all duration-700"
+                className="group relative overflow-hidden border-r border-b border-white/5 text-left transition-all duration-700 hover:bg-white/[0.02]"
               >
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-55 transition-all duration-1000 scale-110 group-hover:scale-100 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${solution.image})` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity" />
+                {/* Image — always visible */}
+                <div className="relative h-44 overflow-hidden border-b border-white/5">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000"
+                    style={{ backgroundImage: `url(${solution.image})` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-transparent" />
+                  <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute top-4 right-4 w-px h-2 bg-violet-400/60" />
+                    <div className="absolute top-4 right-4 w-2 h-px bg-violet-400/60" />
+                  </div>
+                </div>
 
-                <div className="relative flex flex-col items-start gap-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-none border border-white/10 bg-white/5 transition-all duration-500 group-hover:border-violet-500/50 group-hover:bg-violet-500/10">
+                {/* Content */}
+                <div className="px-5 py-6 sm:px-8 sm:py-8 flex flex-col gap-5">
+                  <div className="flex h-11 w-11 items-center justify-center border border-white/10 bg-white/5 transition-all duration-500 group-hover:border-violet-500/50 group-hover:bg-violet-500/10">
                     <Icon className="w-5 h-5 text-slate-400 transition-colors duration-500 group-hover:text-violet-400" />
                   </div>
                   <div className="space-y-3">
                     <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-white">
                       {solution.title}
                     </h3>
-                    <p className="text-sm text-slate-400 leading-relaxed max-w-[280px]">
+                    <div className="h-px w-6 bg-violet-500/30 group-hover:w-full transition-all duration-700" />
+                    <p className="text-sm text-slate-400 leading-relaxed">
                       {solution.line}
                     </p>
                   </div>
-                </div>
-
-                <div className="absolute top-0 right-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute top-4 right-4 w-px h-2 bg-violet-500/50" />
-                  <div className="absolute top-4 right-4 w-2 h-px bg-violet-500/50" />
                 </div>
               </motion.div>
             );
