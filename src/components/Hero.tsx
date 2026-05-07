@@ -4,11 +4,13 @@ import { Eye, Layers, ArrowDown, Cpu } from 'lucide-react';
 import PosterModal from './PosterModal';
 import CorePhilosophyModal from './CorePhilosophyModal';
 
+// Radial-gradient orbs — no filter:blur() so zero per-frame repaint cost.
+// Opacity is the only animated property: compositor-thread only, no layout/paint.
 const orbs = [
-  { left: '8%',  top: '22%', size: 520, color: 'rgba(124,58,237,0.13)', blur: 130, dur: 9,  delay: 0 },
-  { left: '72%', top: '58%', size: 400, color: 'rgba(139,92,246,0.09)', blur: 110, dur: 13, delay: 1.8 },
-  { left: '42%', top: '88%', size: 560, color: 'rgba(109,40,217,0.07)', blur: 150, dur: 16, delay: 0.9 },
-  { left: '87%', top: '10%', size: 290, color: 'rgba(167,139,250,0.06)', blur: 85,  dur: 11, delay: 2.6 },
+  { left: '-5%', top: '15%', size: 640, color: 'rgba(124,58,237,0.22)', dur: 9,  delay: 0 },
+  { left: '68%', top: '52%', size: 500, color: 'rgba(139,92,246,0.16)', dur: 13, delay: 1.8 },
+  { left: '40%', top: '92%', size: 660, color: 'rgba(109,40,217,0.13)', dur: 16, delay: 0.9 },
+  { left: '90%', top: '8%',  size: 360, color: 'rgba(167,139,250,0.14)', dur: 11, delay: 2.6 },
 ];
 
 const TITLE = 'OrchestriX.';
@@ -40,20 +42,25 @@ export default function Hero() {
       <div className="noise-texture" />
       <div className="absolute inset-0 z-0 architectural-grid opacity-[0.14]" />
 
-      {/* Parallax ambient orbs */}
-      <motion.div className="absolute inset-0 pointer-events-none" style={{ x: orbX, y: orbY }}>
+      {/* Parallax ambient orbs — radial-gradient, opacity-only animation (compositor thread) */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{ x: orbX, y: orbY, willChange: 'transform' }}
+      >
         {orbs.map((o, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full"
             style={{
-              left: o.left, top: o.top,
-              width: o.size, height: o.size,
-              background: o.color,
-              filter: `blur(${o.blur}px)`,
-              translateX: '-50%', translateY: '-50%',
+              left: o.left,
+              top: o.top,
+              width: o.size,
+              height: o.size,
+              background: `radial-gradient(circle, ${o.color} 0%, transparent 70%)`,
+              translateX: '-50%',
+              translateY: '-50%',
             }}
-            animate={{ scale: [1, 1.13, 0.92, 1], opacity: [0.7, 1, 0.6, 0.7] }}
+            animate={{ opacity: [0.6, 1, 0.55, 0.6] }}
             transition={{ duration: o.dur, repeat: Infinity, ease: 'easeInOut', delay: o.delay }}
           />
         ))}
@@ -72,16 +79,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-[#050816]/25" />
       </div>
 
-      {/* Slow horizontal scan line */}
-      <motion.div
-        className="absolute left-0 right-0 h-px pointer-events-none"
-        style={{
-          background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.18) 20%, rgba(167,139,250,0.32) 50%, rgba(139,92,246,0.18) 80%, transparent)',
-          boxShadow: '0 0 12px 2px rgba(139,92,246,0.08)',
-        }}
-        animate={{ top: ['0%', '100%'] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
-      />
+      {/* Scan line — pure CSS animation, runs on compositor thread with no JS overhead */}
+      <div className="hero-scanline" />
 
       {/* ── Top-right metadata ── */}
       <motion.div
@@ -154,7 +153,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5 backdrop-blur-sm">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/20 bg-violet-500/5">
               <Layers className="w-3 h-3 text-violet-400" />
               <span className="text-[10px] font-bold uppercase tracking-[0.28em] text-violet-300">
                 Engineering Studio
