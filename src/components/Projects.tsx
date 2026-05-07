@@ -57,10 +57,10 @@ export default function Projects() {
             >
               <div className="relative h-48 overflow-hidden border-b border-white/5">
                 <div
-                  className="absolute inset-0 grayscale opacity-25 group-hover:opacity-50 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
+                  className="absolute inset-0 opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
                   style={{ backgroundImage: `url(${project.image})` }}
                 />
-                <div className="absolute inset-0 bg-violet-950/30 mix-blend-overlay group-hover:bg-transparent transition-all duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050816]/60 to-transparent" />
 
                 <div className="absolute top-4 left-4 flex items-center gap-2 px-2 py-1 bg-[#050816]/80 backdrop-blur-md border border-white/10">
                   <span className="text-[10px] font-mono text-violet-500/80 tracking-tighter">{project.id}</span>

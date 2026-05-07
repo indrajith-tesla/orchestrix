@@ -53,7 +53,7 @@ export default function Why() {
               <img
                 src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Engineering Precision"
-                className="w-full h-full object-cover opacity-30 grayscale group-hover:opacity-50 group-hover:scale-110 transition-all duration-1000"
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent opacity-60" />
               <div className="absolute top-4 left-4 font-mono text-[8px] text-slate-500 tracking-widest bg-black/40 px-2 py-1 backdrop-blur-sm">OP_CODE: 0x921</div>

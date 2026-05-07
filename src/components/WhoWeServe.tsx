@@ -82,7 +82,7 @@ export default function WhoWeServe() {
             >
               <div className="relative h-48 overflow-hidden border-b border-white/5">
                 <div
-                  className="absolute inset-0 grayscale opacity-20 group-hover:opacity-40 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
+                  className="absolute inset-0 opacity-55 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000 bg-cover bg-center"
                   style={{ backgroundImage: `url(${partner.image})` }}
                 />
                 <div className="absolute inset-0 bg-violet-950/20 mix-blend-overlay group-hover:bg-transparent transition-all duration-700" />

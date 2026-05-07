@@ -367,7 +367,7 @@ export default function CorePhilosophyModal({ isOpen, onClose }: CorePhilosophyM
                           <img
                             src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
                             alt="Engineering Precision"
-                            className="w-full h-full object-cover opacity-30 grayscale group-hover:opacity-50 group-hover:scale-110 transition-all duration-1000"
+                            className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-1000"
                             draggable={false}
                           />
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#07071a]/60" />

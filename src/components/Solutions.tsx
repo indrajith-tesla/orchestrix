@@ -96,7 +96,7 @@ export default function Solutions() {
                     {/* Image — always visible on mobile */}
                     <div className="relative h-44 overflow-hidden">
                       <div
-                        className="absolute inset-0 bg-cover bg-center grayscale opacity-30 scale-105"
+                        className="absolute inset-0 bg-cover bg-center opacity-60 scale-105"
                         style={{ backgroundImage: `url(${solution.image})` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#07071a] via-[#07071a]/40 to-transparent" />
@@ -168,7 +168,7 @@ export default function Solutions() {
                 className="group relative overflow-hidden border-r border-b border-white/5 px-5 py-7 sm:px-8 sm:py-10 text-left transition-all duration-700"
               >
                 <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-all duration-1000 scale-110 group-hover:scale-100 bg-cover bg-center grayscale"
+                  className="absolute inset-0 opacity-0 group-hover:opacity-55 transition-all duration-1000 scale-110 group-hover:scale-100 bg-cover bg-center"
                   style={{ backgroundImage: `url(${solution.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity" />
