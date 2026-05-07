@@ -82,9 +82,9 @@ export default function PosterModal({ isOpen, onClose, src, alt, title }: Poster
             exit={{ opacity: 0 }}
             transition={{ duration: 0.35, ease: 'easeOut' }}
             style={{
-              background: 'rgba(3, 5, 18, 0.94)',
-              backdropFilter: 'blur(36px) saturate(1.5)',
-              WebkitBackdropFilter: 'blur(36px) saturate(1.5)',
+              background: 'rgba(3, 5, 18, 0.96)',
+              backdropFilter: 'blur(16px) saturate(1.3)',
+              WebkitBackdropFilter: 'blur(16px) saturate(1.3)',
             }}
             onClick={onClose}
           />
