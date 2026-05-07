@@ -152,7 +152,7 @@ export default function Hero() {
               {TITLE.split('').map((char, i) => (
                 <motion.span
                   key={i}
-                  className={char === 'X' ? 'text-violet-500' : 'text-white'}
+                  className={char === 'X' ? 'text-shimmer' : 'text-white'}
                   style={{ display: 'inline-block' }}
                   initial={{ y: '110%', opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
